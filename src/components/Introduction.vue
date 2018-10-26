@@ -1,7 +1,7 @@
 <template>
-  <section>
-    <h1>This is the Introduction.</h1>
-  </section>
+  <header class="introduction">
+    <h1>Greenhouse Gas Emissions by country</h1>
+  </header>
 </template>
 
 <script>
@@ -12,4 +12,13 @@ export default {
 </script>
 
 <style scoped>
+
+.introduction {
+  display: flex;
+  align-items: center;
+}
+
+  h1 {
+    color: var(--primary-color);
+  }
 </style>

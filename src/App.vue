@@ -10,8 +10,8 @@
 
 <style>
 :root {
-  --primary-color: orange;
-  --neutral-color: rgb(50, 50, 50);
+  --primary-color: #003399;
+  --neutral-color: rgb(40, 40, 40);
   --font-size: 16px;
   --font-family: "Open Sans", sans-serif;
 }
