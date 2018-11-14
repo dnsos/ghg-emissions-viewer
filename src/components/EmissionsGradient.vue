@@ -3,6 +3,7 @@
     class="wrapper"
     :class="{ active: isActive }"
     :id="'wrapper__' + country.toLowerCase()"
+    v-cloak
     @mouseout="isActive = !isActive"
     @mouseover="isActive = !isActive"
   >
@@ -26,6 +27,7 @@
         </g>
       </svg>
     </figure>
+    <p>{{intervalStart + values.length - 1}}: {{activeValue}}</p>
     <!--<label class="color-checkbox" v-show="isActive">
       <input type="checkbox">
       Show absolute cell colors
@@ -52,7 +54,10 @@ export default {
       return this.gradientWidth / this.values.length
     },
     cellColor: function (value) { // compute color of cell using chroma.js
-      return chroma.scale(['white', 'black']).domain([2286, 1263708])
+      return chroma.scale(['white', 'black']).domain([Math.min(...this.values), Math.max(...this.values)])
+    },
+    activeValue: function () {
+      return this.values[this.values.length - 1]
     }
   },
   methods: {
@@ -60,6 +65,7 @@ export default {
       this.gradientWidth = document.querySelector('.wrapper').offsetWidth - 50
     },
     logValues (value, index, intervalStart) {
+      this.activeValue = value
       console.log(intervalStart + index, value)
       console.log('Initial value for', this.country, 'is:', this.initialValue)
     }
@@ -74,15 +80,18 @@ export default {
 <style scoped>
   .wrapper {
     padding: var(--spacing);
+    grid-column: span 1;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
-    "h h h h h h h h h h h h"
-    "g g g g g g g g g g g g"
-    "c c c c c c c c c c c c"
+    "h h h"
+    "g g g"
+    "c c c"
     ;
     background-color: white;
+    border-radius: .5rem;
+    box-shadow: 0px 0px 10px var(--light-color);
   }
 
   h4 {
@@ -100,11 +109,11 @@ export default {
     overflow: hidden;
   }
 
-  .color-checkbox {
+  p {
     grid-area: c;
   }
 
-  section.active {
-     box-shadow: 0px 0px 10px var(--light-color);
+  .wrapper.active {
+    box-shadow: 0px 0px 10px var(--medium-color);
   }
 </style>
