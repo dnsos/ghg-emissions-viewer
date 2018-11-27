@@ -2,12 +2,12 @@
   <section 
     class="wrapper"
     :class="{ active: isActive }"
-    :id="'wrapper__' + country.toLowerCase()"
+    :id="'wrapper__' + entity.toLowerCase()"
     v-cloak
     @mouseout="isActive = !isActive"
     @mouseover="isActive = !isActive"
   >
-    <h4>{{country}}</h4>
+    <h4>{{entity}}</h4>
     <!-- SVG ELement for Emissions Gradient -->
     <figure :class="{ active: isActive }">
       <svg :width="gradientWidth" :height="gradientHeight">
@@ -40,7 +40,7 @@ import chroma from 'chroma-js' // chroma for color scales
 
 export default {
   name: 'EmissionsGradient',
-  props: ['intervalStart', 'country', 'values', 'initialValue'],
+  props: ['intervalStart', 'entity', 'values', 'initialValue'],
   data: function () {
     // define svg settings
     return {
@@ -67,7 +67,7 @@ export default {
     logValues (value, index, intervalStart) {
       this.activeValue = value
       console.log(intervalStart + index, value)
-      console.log('Initial value for', this.country, 'is:', this.initialValue)
+      console.log('Initial value for', this.entity, 'is:', this.initialValue)
     }
   },
   created: function () {
@@ -79,7 +79,7 @@ export default {
 
 <style scoped>
   .wrapper {
-    padding: var(--spacing);
+    padding: var(--grid-spacing);
     grid-column: span 1;
     display: grid;
     grid-gap: 10px;
@@ -91,12 +91,12 @@ export default {
     ;
     background-color: white;
     border-radius: .5rem;
-    box-shadow: 0px 0px 10px var(--light-color);
+    box-shadow: 0px 0px 10px var(--color-grey-09);
   }
 
   h4 {
     grid-area: h;
-    margin-bottom: calc(var(--spacing) - 2rem);
+    margin-bottom: calc(var(--grid-spacing) - 2rem);
   }
 
   figure {
@@ -114,6 +114,6 @@ export default {
   }
 
   .wrapper.active {
-    box-shadow: 0px 0px 10px var(--medium-color);
+    box-shadow: 0px 0px 10px var(--color-grey-20);
   }
 </style>

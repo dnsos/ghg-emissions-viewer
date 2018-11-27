@@ -21,7 +21,7 @@ export default {
 
 .s-introduction {
   grid-column: span 12;
-  margin-bottom: calc(var(--spacing) * 2);
+  margin-bottom: calc(var(--grid-spacing) * 2);
 }
 
 @media (min-width: 850px) {

@@ -12,13 +12,13 @@
 :root {
   --color-primary: #003399;
   --color-secondary: #ff3939;
-  --neutral-color: #3e3e3e;
-  --medium-color: #cccccc;
-  --light-color: #e7e7e7;
-  --superlight-color: #f9f9f9;
+  --color-grey-76: #3e3e3e;
+  --color-grey-20: #cccccc;
+  --color-grey-09: #e7e7e7;
+  --color-grey-02: #f9f9f9;
   --font-size: 16px;
   --font-family: "IBM Plex Sans", sans-serif;
-  --spacing: 2.5rem;
+  --grid-spacing: 2.5rem;
 }
 
 html {
@@ -28,7 +28,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  color: var(--neutral-color);
+  color: var(--color-grey-76);
   background-color: white;
   line-height: 1.6;
   font-family: var(--font-family);
@@ -42,16 +42,23 @@ body {
 }
 
 .s-grid {
-  padding: var(--spacing);
+  padding: var(--grid-spacing);
   display: grid;
-  grid-gap: var(--spacing);
+  grid-gap: var(--grid-spacing);
   grid-template-columns: repeat(12, 1fr);
 }
+
+.s-grid__autofit {
+    padding: var(--grid-spacing);
+    display: grid;
+    grid-gap: var(--grid-spacing);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 
 nav {
   position: sticky;
   top: 0;
-  padding: var(--spacing);
+  padding: calc(var(--grid-spacing) / 2) var(--grid-spacing);
   grid-column: span 12;
   color: white;
   background-color: var(--color-secondary);
@@ -63,7 +70,7 @@ nav {
 h1, h2, h3, h4, h5, h6 {
   display: block;
   margin-top: 0;
-  margin-bottom: var(--spacing);
+  margin-bottom: var(--grid-spacing);
   font-weight: 400; }
 h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
 h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
@@ -83,7 +90,7 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 
 p {
   margin-top: 0;
-  margin-bottom: var(--spacing); }
+  margin-bottom: var(--grid-spacing); }
 
 a {
   color: #1EAEDB; }
