@@ -1,37 +1,24 @@
 <template>
   <section>
-    <section class="s-grid">
-      <Introduction />
-    </section>
-    <section class="s-grid s-eu">
-      EU values
-    </section>
-    <section class="s-grid s-shares">
-      Countries' total shares
-    </section>
-    <section class="s-grid s-comparison">
-      <ComparisonGradient />
-    </section>
-    <section class="s-grid__autofit s-overview">
-      <EmissionsGradient
-        v-for="entity in ghg.entities"
-        :key="entity.name"
-        :intervalStart="ghg.intervalStart"
-        :initialValue="entity.values[0]"
-        :entity="entity.name"
-        :values="entity.values"
-      />
-    </section>
-    <section class="s-grid s-about">
-      About section
-    </section>
+    <SectionIntro />
+    <SectionEU />
+    <SectionShares :entities="ghg.entities" />
+    <SectionComparison />
+    <SectionOverview :entities="ghg.entities" :intervalStart="ghg.intervalStart" />
+    <SectionAbout />
   </section>
 </template>
 
 <script>
-import Introduction from '@/components/Introduction.vue'
 import ComparisonGradient from '@/components/ComparisonGradient.vue'
 import EmissionsGradient from '@/components/EmissionsGradient.vue'
+
+import SectionIntro from '@/components/SectionIntro.vue'
+import SectionEU from '@/components/SectionEU.vue'
+import SectionShares from '@/components/SectionShares.vue'
+import SectionComparison from '@/components/SectionComparison.vue'
+import SectionOverview from '@/components/SectionOverview.vue'
+import SectionAbout from '@/components/SectionAbout.vue'
 
 export default {
   name: 'home',
@@ -41,25 +28,39 @@ export default {
     }
   },
   created: function () {
-    let vm = this
+    // call fettch action here
+    this.$store.dispatch('fetchData')
+
+    /*let vm = this
     fetch('data.json')
       .then(response => response.json())
-      .then(data => vm.ghg = data)
+      .then(data => vm.ghg = data)*/
   },
   components: {
-    Introduction,
     ComparisonGradient,
-    EmissionsGradient
+    EmissionsGradient,
+    SectionIntro,
+    SectionEU,
+    SectionShares,
+    SectionComparison,
+    SectionOverview,
+    SectionAbout
   }
 }
 </script>
 
-<style scoped>
-  .s-introduction, .s-eu, .s-shares, .s-comparison, .s-overview, .s-about {
-    min-height: 100vh;
+<style>
+  .c-introduction {
+    grid-column: span 12;
   }
-  
-  .s-overview {
-    background-color: var(--color-grey-02);
+
+  @media (min-width: 850px) {
+    .c-introduction {
+      grid-column: span 6;
+    }
+  }
+
+  .s-wrapper {
+    min-height: 100vh;
   }
 </style>

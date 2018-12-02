@@ -49,7 +49,7 @@ body {
 }
 
 .s-grid__autofit {
-    padding: var(--grid-spacing);
+    /*padding: var(--grid-spacing);*/
     display: grid;
     grid-gap: var(--grid-spacing);
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -71,7 +71,8 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   margin-top: 0;
   margin-bottom: var(--grid-spacing);
-  font-weight: 400; }
+  font-weight: 400;
+  color: var(--color-primary); }
 h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
 h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
 h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
