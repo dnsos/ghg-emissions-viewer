@@ -20,7 +20,6 @@
             :width="cellWidth"
             :height="gradientHeight"
             :fill="cellColor(value)"
-            @mouseover="logValues(value, index, intervalStart)"
             >
           </rect>
         </g>
@@ -45,7 +44,7 @@ export default {
     return {
       isActive: false,
       gradientWidth: 412,
-      gradientHeight: 20
+      gradientHeight: 100
     }
   },
   computed: {
@@ -89,8 +88,8 @@ export default {
     "c c c"
     ;
     background-color: white;
-    border-radius: .5rem;
-    box-shadow: 0px 0px 10px var(--color-grey-09);
+    /*border-radius: .5rem;*/
+    /*box-shadow: 0px 0px 10px var(--color-grey-09);*/
   }
 
   h4 {
@@ -104,7 +103,7 @@ export default {
     line-height: 0;
     padding: 0;
     margin: 0;
-    border: 1px solid transparent;
+    border: none;
     overflow: hidden;
   }
 
@@ -112,7 +111,9 @@ export default {
     grid-area: c;
   }
 
-  .c-gradient.active {
-    box-shadow: 0px 0px 10px var(--color-grey-20);
+  figure.active {
+    /*box-shadow: 0px 0px 10px var(--color-grey-20);*/
+    outline: 8px dashed var(--color-secondary);
+    outline-offset: 0px;
   }
 </style>

@@ -1,12 +1,12 @@
 <template>
-  <section>
+  <main>
     <SectionIntro />
     <SectionEU />
     <SectionShares />
     <SectionComparison />
     <SectionOverview />
     <SectionAbout />
-  </section>
+  </main>
 </template>
 
 <script>
@@ -41,11 +41,14 @@ export default {
 </script>
 
 <style>
+main {
+  max-width: 120rem;
+}
   .c-introduction {
     grid-column: span 12;
   }
 
-  @media (min-width: 850px) {
+  @media (min-width: 85rem) {
     .c-introduction {
       grid-column: span 4;
     }
@@ -55,7 +58,7 @@ export default {
     grid-column: span 12;
   }
 
-  @media (min-width: 850px) {
+  @media (min-width: 85rem) {
     .c-main {
       grid-column: span 8;
     }
