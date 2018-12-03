@@ -1,7 +1,7 @@
 <template>
   <article class="s-grid s-wrapper">
     <section class="c-introduction">
-      <h2>Introduction</h2>
+      <h1>How did the emission of Greenhouse Gases in the EU develop?</h1>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi inventore blanditiis, incidunt distinctio nulla itaque nesciunt earum libero. Sint minus provident corporis. Sunt necessitatibus repellat, animi non hic veniam odit.</p>
       <h3>Product list</h3>
       <ul>

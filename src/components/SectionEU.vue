@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
-import EmissionsGradient from "@/components/EmissionsGradient.vue"
+import { mapGetters } from 'vuex'
+import EmissionsGradient from '@/components/EmissionsGradient.vue'
 
 export default {
-  name: "SectionEU",
+  name: 'SectionEU',
   components: {
     EmissionsGradient
   },
@@ -31,9 +31,9 @@ export default {
   },
   computed: {
     intervalStart: function() {
-      return this.$store.state.ghgdata.intervalStart
+      return this.$store.state.data.intervalStart
     },
-    ...mapGetters(["euEntity"])
+    ...mapGetters(['euEntity'])
   }
 }
 </script>

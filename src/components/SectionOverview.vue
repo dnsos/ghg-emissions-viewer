@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     intervalStart: function() {
-      return this.$store.state.ghgdata.intervalStart
+      return this.$store.state.data.intervalStart
     },
     allEntitiesExceptEU: function() {
       return this.$store.getters.allEntitiesExceptEU

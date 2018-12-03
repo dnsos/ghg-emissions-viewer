@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import ghgdata from '../data/data.json'
+import data from '../data/data.json'
 
 Vue.use(Vuex)
 
@@ -13,7 +13,7 @@ export const store = new Vuex.Store({
             { name: 'Kiwi', price: 40 },
             { name: 'Peach', price: 60 }
         ],
-        ghgdata: ghgdata
+        data: data
     },
     getters: {
         saleProducts: (state) => {
@@ -26,17 +26,17 @@ export const store = new Vuex.Store({
             return saleProducts
         },
         euEntity: (state) => {
-            let euEntity = state.ghgdata.entities.filter(entity => entity.name === 'EU') 
+            let euEntity = state.data.entities.filter(entity => entity.name === 'EU') 
             return euEntity
         },
         allEntitiesExceptEU: (state) => {
-            let allEntitiesExceptEU = state.ghgdata.entities.filter(entity => entity.name !== 'EU') 
+            let allEntitiesExceptEU = state.data.entities.filter(entity => entity.name !== 'EU') 
             return allEntitiesExceptEU
         }
     },
     mutations: {
         fetchData(state, data) {
-            state.ghgdata = data
+            state.data = data
         },
         reducePrice: (state, payload) => {
             state.products.forEach(product => {
@@ -48,13 +48,13 @@ export const store = new Vuex.Store({
         fetchData: ({ commit }) => {
             fetch('data.json')
                 .then(response => response.json())
-                .then(data => commit('fetchData', data))
+                .then(json => commit('fetchData', json))
         },
         // always perform asynchronous tasks (like API fetching) in 'actions' 
         handleReducePrice: (context, payload) => {
             setTimeout(() => {
                 context.commit('reducePrice', payload)
-            }, 200)
+            }, 0)
         }
     }
 })
