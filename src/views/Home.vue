@@ -2,9 +2,9 @@
   <section>
     <SectionIntro />
     <SectionEU />
-    <SectionShares :entities="ghg.entities" />
+    <SectionShares />
     <SectionComparison />
-    <SectionOverview :entities="ghg.entities" :intervalStart="ghg.intervalStart" />
+    <SectionOverview />
     <SectionAbout />
   </section>
 </template>
@@ -24,17 +24,8 @@ export default {
   name: 'home',
   data: function () {
     return {
-      ghg: {}
+      
     }
-  },
-  created: function () {
-    // call fettch action here
-    this.$store.dispatch('fetchData')
-
-    /*let vm = this
-    fetch('data.json')
-      .then(response => response.json())
-      .then(data => vm.ghg = data)*/
   },
   components: {
     ComparisonGradient,
@@ -56,7 +47,17 @@ export default {
 
   @media (min-width: 850px) {
     .c-introduction {
-      grid-column: span 6;
+      grid-column: span 4;
+    }
+  }
+
+  .c-main {
+    grid-column: span 12;
+  }
+
+  @media (min-width: 850px) {
+    .c-main {
+      grid-column: span 8;
     }
   }
 

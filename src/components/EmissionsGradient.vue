@@ -1,8 +1,7 @@
 <template>
   <section 
-    class="wrapper"
+    class="c-gradient"
     :class="{ active: isActive }"
-    :id="'wrapper__' + entity.toLowerCase()"
     v-cloak
     @mouseout="isActive = !isActive"
     @mouseover="isActive = !isActive"
@@ -62,7 +61,7 @@ export default {
   },
   methods: {
     handleResize () {
-      this.gradientWidth = document.querySelector('.wrapper').offsetWidth - 50
+      this.gradientWidth = document.querySelector('.c-gradient').offsetWidth - 50
     },
     logValues (value, index, intervalStart) {
       this.activeValue = value
@@ -72,13 +71,13 @@ export default {
   },
   created: function () {
     window.addEventListener('resize', this.handleResize)
-    this.handleResize()
+    //this.handleResize()
   }
 }
 </script>
 
 <style scoped>
-  .wrapper {
+  .c-gradient {
     padding: var(--grid-spacing);
     grid-column: span 1;
     display: grid;
@@ -113,7 +112,7 @@ export default {
     grid-area: c;
   }
 
-  .wrapper.active {
+  .c-gradient.active {
     box-shadow: 0px 0px 10px var(--color-grey-20);
   }
 </style>

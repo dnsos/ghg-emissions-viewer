@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import ghgdata from '../data/data.json'
 
 Vue.use(Vuex)
 
@@ -12,10 +13,10 @@ export const store = new Vuex.Store({
             { name: 'Kiwi', price: 40 },
             { name: 'Peach', price: 60 }
         ],
-        ghgdata: {}
+        ghgdata: ghgdata
     },
     getters: {
-        saleProducts: state => {
+        saleProducts: (state) => {
             let saleProducts = state.products.map(product => {
                 return {
                     name: '**' + product.name + '**',
@@ -23,6 +24,14 @@ export const store = new Vuex.Store({
                 }
             })
             return saleProducts
+        },
+        euEntity: (state) => {
+            let euEntity = state.ghgdata.entities.filter(entity => entity.name === 'EU') 
+            return euEntity
+        },
+        allEntitiesExceptEU: (state) => {
+            let allEntitiesExceptEU = state.ghgdata.entities.filter(entity => entity.name !== 'EU') 
+            return allEntitiesExceptEU
         }
     },
     mutations: {
@@ -45,7 +54,7 @@ export const store = new Vuex.Store({
         handleReducePrice: (context, payload) => {
             setTimeout(() => {
                 context.commit('reducePrice', payload)
-            }, 1000);
+            }, 200)
         }
     }
 })

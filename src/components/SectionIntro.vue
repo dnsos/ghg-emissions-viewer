@@ -1,5 +1,5 @@
 <template>
-  <section class="s-grid s-wrapper">
+  <article class="s-grid s-wrapper">
     <section class="c-introduction">
       <h2>Introduction</h2>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi inventore blanditiis, incidunt distinctio nulla itaque nesciunt earum libero. Sint minus provident corporis. Sunt necessitatibus repellat, animi non hic veniam odit.</p>
@@ -19,11 +19,12 @@
       </ul>
       <button @click="reducePrice(4)">Reduce price</button>
     </section>
-  </section>
+  </article>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+
 export default {
   name: 'SectionIntro',
   props: [],
