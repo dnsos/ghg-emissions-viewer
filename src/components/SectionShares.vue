@@ -1,8 +1,8 @@
 <template>
   <article class="s-grid s-wrapper">
     <section class="c-introduction">
-      <h2>Shares of GHGs between EU countries</h2>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla nesciunt incidunt cum sint! Dicta harum provident magni, quibusdam eveniet facilis necessitatibus odit rem! Perferendis quo vitae fuga illo ab. Vero?</p>
+      <h2>Let's now take a look at how these emissions are distributed.</h2>
+      <p>Each European country contributes its emissions to the total value. However, the volume varies. Explore the different shares throughout the years here.</p>
     </section>
     <section class="c-main">
       <ul>
@@ -15,6 +15,8 @@
         <strong>{{getPercentage(entity.values[0], totalValue).toFixed(2)}}</strong>
         </li>
       </ul>
+      <div id="testid">
+      </div>
     </section>
   </article>
 </template>
@@ -35,6 +37,11 @@ export default {
         val += entity.values[0]
       })
       return val
+    },
+    getElementWidth: function () {
+      console.log(document.getElementById('testid'))
+      
+      return document.getElementById('testid')
     }
   },
   methods: {
@@ -46,4 +53,10 @@ export default {
 </script>
 
 <style scoped>
+
+#testid {
+  width: 66px;
+  height: 66px;
+  background-color: chocolate;
+}
 </style>
