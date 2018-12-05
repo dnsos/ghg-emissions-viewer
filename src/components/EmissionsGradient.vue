@@ -38,7 +38,7 @@ import chroma from 'chroma-js' // chroma for color scales
 
 export default {
   name: 'EmissionsGradient',
-  props: ['intervalStart', 'entity', 'values', 'initialValue'],
+  props: ['intervalStart', 'entity', 'values', 'initialValue', 'maxValue'],
   data: function () {
     // define svg settings
     return {
@@ -52,7 +52,7 @@ export default {
       return this.gradientWidth / this.values.length
     },
     cellColor: function (value) { // compute color of cell using chroma.js
-      return chroma.scale(['white', 'black']).domain([Math.min(...this.values), Math.max(...this.values)])
+      return chroma.scale(['white', 'black']).domain([0, this.maxValue])
     },
     activeValue: function () {
       return this.values[this.values.length - 1]
@@ -80,7 +80,7 @@ export default {
     padding: var(--grid-spacing);
     grid-column: span 1;
     display: grid;
-    grid-gap: 10px;
+    grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
     "h h h"
@@ -94,7 +94,8 @@ export default {
 
   h4 {
     grid-area: h;
-    margin-bottom: calc(var(--grid-spacing) - 2rem);
+    margin-bottom: 0;
+    border-bottom: .1rem dashed var(--color-grey-09);
   }
 
   figure {
@@ -109,6 +110,7 @@ export default {
 
   p {
     grid-area: c;
+    border-top: .1rem dashed var(--color-grey-09);
   }
 
   figure.active {

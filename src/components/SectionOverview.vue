@@ -12,6 +12,7 @@
         :initialValue="entity.values[0]"
         :entity="entity.name"
         :values="entity.values"
+        :maxValue="maxValueAllEntities"
       />
     </section>
   </article>
@@ -31,6 +32,10 @@ export default {
     },
     allEntitiesExceptEU: function() {
       return this.$store.getters.allEntitiesExceptEU
+    },
+    maxValueAllEntities: function () {
+      let maxEntity = this.allEntitiesExceptEU.map(entity => Math.max(...entity.values))
+      return Math.max(...maxEntity)
     }
   },
   components: {

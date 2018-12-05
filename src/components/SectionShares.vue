@@ -11,7 +11,7 @@
           :key="entity.name"
         >
         {{entity.name}}
-        {{entity.values[0]}}
+        {{new Intl.NumberFormat().format(entity.values[0])}}
         <strong>{{getPercentage(entity.values[0], totalValue).toFixed(2)}}</strong>
         </li>
       </ul>

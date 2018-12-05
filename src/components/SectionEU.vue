@@ -12,6 +12,7 @@
         :initialValue="entity.values[0]"
         :entity="entity.name"
         :values="entity.values"
+        :maxValue="maxValueEu"
       />
     </section>
   </article>
@@ -33,7 +34,12 @@ export default {
     intervalStart: function() {
       return this.$store.state.data.intervalStart
     },
-    ...mapGetters(['euEntity'])
+    ...mapGetters(['euEntity']),
+    maxValueEu: function () {
+      console.log(euEntity)
+      
+      return Math.max(this.euEntity.values)
+    }
   }
 }
 </script>
