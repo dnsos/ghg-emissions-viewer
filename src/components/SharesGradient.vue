@@ -1,14 +1,4 @@
 <template>
-  <section 
-    class="c-gradient"
-    :class="{ active: isActive }"
-    :id="'c-gradient__' + entity.toLowerCase()"
-    v-cloak
-    @mouseout="isActive = !isActive"
-    @mouseover="isActive = !isActive"
-  >
-    <h4>{{entity}}</h4>
-    <!-- SVG ELement for Emissions Gradient -->
     <figure :class="{ active: isActive }">
       <svg :width="gradientWidth" :height="gradientHeight">
         <g>
@@ -26,20 +16,14 @@
         </g>
       </svg>
     </figure>
-    <p>{{intervalStart + values.length - 1}}: {{activeValue}}</p>
-    <!--<label class="color-checkbox" v-show="isActive">
-      <input type="checkbox">
-      Show absolute cell colors
-    </label>-->
-  </section>
 </template>
 
 <script>
 import chroma from 'chroma-js' // chroma for color scales
 
 export default {
-  name: 'EmissionsGradient',
-  props: ['intervalStart', 'entity', 'values', 'initialValue', 'maxValueRelative'],
+  name: 'SharesGradient',
+  props: [],
   data: function () {
     // define svg settings
     return {
@@ -56,26 +40,10 @@ export default {
     cellColor: function (value) { // compute color of cell using chroma.js
       let maxValueDomain = (this.isAbsolute) ? Math.max(...this.values) : this.maxValueRelative
       return chroma.scale(['white', 'black']).domain([0, maxValueDomain])
-    },
-    activeValue: function () {
-      return this.values[this.values.length - 1]
     }
   },
   methods: {
-    /*handleResize () {
-      console.log(document.getElementById('c-gradient__eu'))
-      
-      this.gradientWidth = document.getElementById('c-gradient__' + entity).offsetWidth
-    },*/
-    logValues (value, index, intervalStart) {
-      this.activeValue = value
-      console.log(intervalStart + index, value)
-      console.log('Initial value for', this.entity, 'is:', this.initialValue)
-    }
-  },
-  created: function () {
-    /*window.addEventListener('resize', this.handleResize)
-    this.handleResize()*/
+
   }
 }
 </script>

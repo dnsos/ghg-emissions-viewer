@@ -12,7 +12,7 @@
         :initialValue="entity.values[0]"
         :entity="entity.name"
         :values="entity.values"
-        :maxValue="maxValueEu"
+        :maxValueRelative="maxValueEu"
       />
     </section>
   </article>
@@ -27,18 +27,19 @@ export default {
   components: {
     EmissionsGradient
   },
-  data: function() {
+  data: function () {
     return {}
   },
   computed: {
-    intervalStart: function() {
+    intervalStart: function () {
       return this.$store.state.data.intervalStart
     },
-    ...mapGetters(['euEntity']),
+    euEntity: function () {
+      return this.$store.getters.euEntity
+    },
     maxValueEu: function () {
-      console.log(euEntity)
-      
-      return Math.max(this.euEntity.values)
+      // let val = Math.max(...euEntity.values)
+      return 5719571.03
     }
   }
 }
