@@ -1,16 +1,17 @@
 <template>
-    <figure :class="{ active: isActive }">
+    <figure class="wrapper" ref="wrapper">
       <svg :width="gradientWidth" :height="gradientHeight">
         <g>
           <!-- append cells as svg rects -->
           <rect
-            v-for="(value, index) in values"
+            v-for="(share, index) in sharesSeries"
             :key="index"
-            :x="cellWidth * index"
+            :x="shareSettings(share).x"
             :y="0"
-            :width="cellWidth"
+            :width="shareSettings(share).width"
             :height="gradientHeight"
-            :fill="cellColor(value)"
+            fill="#003399"
+            stroke="white"
             >
           </rect>
         </g>
@@ -19,73 +20,63 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import chroma from 'chroma-js' // chroma for color scales
+import * as d3 from 'd3'
 
 export default {
   name: 'SharesGradient',
-  props: [],
+  props: ['activeYearIndex'],
   data: function () {
-    // define svg settings
     return {
-      isActive: false,
-      isAbsolute: false,
-      gradientWidth: 412,
+      gradientWidth: 0,
       gradientHeight: 100
     }
   },
   computed: {
-    cellWidth: function () { // compute width of cell
-      return this.gradientWidth / this.values.length
+    ...mapGetters(['sharesOrderedByYear']),
+    yearIndex: function () {
+      return this.activeYearIndex
     },
-    cellColor: function (value) { // compute color of cell using chroma.js
-      let maxValueDomain = (this.isAbsolute) ? Math.max(...this.values) : this.maxValueRelative
-      return chroma.scale(['white', 'black']).domain([0, maxValueDomain])
+    sharesSeries: function () {
+      let stack = d3.stack()
+        .keys(Object.keys(this.sharesOrderedByYear[this.yearIndex]))
+        .order(d3.stackOrderNone)
+        .offset(d3.stackOffsetNone)
+    return stack(this.sharesOrderedByYear)
+    },
+    sumOfYear: function () {
+      const reducer = (accumulator, currentValue) => accumulator + currentValue
+      return Object.values(this.sharesOrderedByYear[this.yearIndex]).reduce(reducer)
     }
   },
   methods: {
+    shareXPosition: function (value) {
+      const x = d3.scaleLinear().range([0, this.gradientWidth]).domain([0,this.sumOfYear])
+      return x(value)
+    },
+    shareSettings: function (share) {
+      const startValue = share[0][0],
+            endValue = share[0][1]
+      const x = d3.scaleLinear().range([0, this.gradientWidth]).domain([0,this.sumOfYear])
 
+      return {
+        x: x(startValue),
+        width: x(endValue - startValue)
+      }
+    }
+  },
+  mounted: function () {
+    // set svg width according to wrapping element
+    this.gradientWidth = this.$refs.wrapper.offsetWidth
+    console.log('Series:', this.sharesSeries)
   }
 }
 </script>
 
 <style scoped>
-  .c-gradient {
-    grid-column: span 1;
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-    "h h h"
-    "g g g"
-    "c c c"
-    ;
-    background-color: white;
-  }
-
-  h4 {
-    grid-area: h;
-    margin-bottom: 0;
-    border-bottom: .1rem dashed var(--color-grey-09);
-  }
-
-  figure {
-    grid-area: g;
-    width: 100%;
-    line-height: 0;
-    padding: 0;
-    margin: 0;
-    border: none;
-    overflow: hidden;
-  }
-
-  p {
-    grid-area: c;
-    border-top: .1rem dashed var(--color-grey-09);
-  }
-
-  figure.active {
-    /*box-shadow: 0px 0px 10px var(--color-grey-20);*/
-    outline: 8px dashed var(--color-secondary);
-    outline-offset: 0px;
-  }
+.wrapper {
+  padding: 0;
+  margin: 0;
+}
 </style>

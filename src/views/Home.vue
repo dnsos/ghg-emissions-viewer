@@ -41,9 +41,6 @@ export default {
 </script>
 
 <style>
-main {
-  max-width: 120rem;
-}
   .c-introduction {
     grid-column: span 12;
   }
@@ -65,6 +62,7 @@ main {
   }
 
   .s-wrapper {
+    max-width: 120rem;
     min-height: 100vh;
   }
 </style>

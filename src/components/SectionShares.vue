@@ -8,8 +8,9 @@
         <output>{{activeYear}}</output>
       </form>
     </section>
-    <section class="c-main">
-      <ul>
+    <section class="c-main fullwidth">
+      <SharesGradient :activeYearIndex="rangeValue" />
+      <!--<ul>
         <li 
           v-for="entity in allEntitiesExceptEU"
           :key="entity.name"
@@ -18,13 +19,14 @@
         {{new Intl.NumberFormat().format(entity.values[rangeValue])}}
         <strong>{{getPercentage(entity.values[rangeValue], totalValue).toFixed(2)}}</strong>
         </li>
-      </ul>
+      </ul>-->
     </section>
   </article>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import SharesGradient from "@/components/SharesGradient.vue"
 
 export default {
   name: 'SectionShares',
@@ -53,9 +55,19 @@ export default {
     getPercentage: function (partialValue, totalValue) {
       return partialValue / totalValue * 100
     }
+  },
+  mounted: function () {
+    console.log('Range value:', this.rangeValue)
+    
+  },
+  components: {
+    SharesGradient
   }
 }
 </script>
 
 <style scoped>
+.fullwidth {
+  grid-column: 1 /13;
+}
 </style>
