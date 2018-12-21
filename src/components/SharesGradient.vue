@@ -3,17 +3,17 @@
       <svg :width="gradientWidth" :height="gradientHeight">
         <g>
           <!-- append cells as svg rects -->
-          <rect
-            v-for="(share, index) in sharesSeries"
-            :key="index"
-            :x="shareSettings(share).x"
+          <ShareElement 
+            v-for="(share, index) in sharesSeries" 
+            :key="index" 
+            :shareValues="share"
             :y="0"
-            :width="shareSettings(share).width"
             :height="gradientHeight"
+            :gradientWidth="gradientWidth"
             fill="#003399"
             stroke="white"
-            >
-          </rect>
+            :yearSum="yearSum"
+          />
         </g>
       </svg>
     </figure>
@@ -23,9 +23,13 @@
 import { mapGetters } from 'vuex'
 import chroma from 'chroma-js' // chroma for color scales
 import * as d3 from 'd3'
+import ShareElement from "@/components/ShareElement.vue"
 
 export default {
   name: 'SharesGradient',
+  components: {
+    ShareElement
+  },
   props: ['activeYearIndex'],
   data: function () {
     return {
@@ -45,31 +49,22 @@ export default {
         .offset(d3.stackOffsetNone)
     return stack(this.sharesOrderedByYear)
     },
-    sumOfYear: function () {
+    yearSum: function () {
       const reducer = (accumulator, currentValue) => accumulator + currentValue
       return Object.values(this.sharesOrderedByYear[this.yearIndex]).reduce(reducer)
     }
   },
   methods: {
-    shareXPosition: function (value) {
-      const x = d3.scaleLinear().range([0, this.gradientWidth]).domain([0,this.sumOfYear])
-      return x(value)
-    },
-    shareSettings: function (share) {
-      const startValue = share[0][0],
-            endValue = share[0][1]
-      const x = d3.scaleLinear().range([0, this.gradientWidth]).domain([0,this.sumOfYear])
-
-      return {
-        x: x(startValue),
-        width: x(endValue - startValue)
-      }
+    getEntity: function (share) {
+      return share
     }
   },
   mounted: function () {
-    // set svg width according to wrapping element
+    // set svg width according to wrapping element and add resize listener
     this.gradientWidth = this.$refs.wrapper.offsetWidth
-    console.log('Series:', this.sharesSeries)
+    window.addEventListener('resize', () => {
+        this.gradientWidth = this.$refs.wrapper.offsetWidth
+      })
   }
 }
 </script>
