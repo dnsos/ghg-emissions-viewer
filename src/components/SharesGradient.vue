@@ -10,7 +10,7 @@
             :y="0"
             :height="gradientHeight"
             :gradientWidth="gradientWidth"
-            fill="#003399"
+            fill="#cccccc"
             stroke="white"
             :yearSum="yearSum"
           />
@@ -45,7 +45,7 @@ export default {
     sharesSeries: function () {
       let stack = d3.stack()
         .keys(Object.keys(this.sharesOrderedByYear[this.yearIndex]))
-        .order(d3.stackOrderNone)
+        .order(d3.stackOrderAscending)
         .offset(d3.stackOffsetNone)
     return stack(this.sharesOrderedByYear)
     },
@@ -55,9 +55,7 @@ export default {
     }
   },
   methods: {
-    getEntity: function (share) {
-      return share
-    }
+    
   },
   mounted: function () {
     // set svg width according to wrapping element and add resize listener

@@ -47,6 +47,7 @@ body {
   display: grid;
   grid-gap: var(--grid-spacing);
   grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: max-content;
 }
 
 .s-grid__autofit {

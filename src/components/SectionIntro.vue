@@ -1,8 +1,8 @@
 <template>
   <article class="s-grid s-wrapper">
     <section class="c-introduction">
-      <h1>How did the emission of Greenhouse Gases in the EU develop?</h1>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi inventore blanditiis, incidunt distinctio nulla itaque nesciunt earum libero. Sint minus provident corporis. Sunt necessitatibus repellat, animi non hic veniam odit.</p>
+      <h1>Europes Greenhouse Gas Emissions visualised</h1>
+      <p>This is a visual explanation of how Europes (EU + some others) Greenhouse Gas Emissions developedin the past decades.</p>
       <h3>Product list</h3>
       <ul>
         <li v-for="(product, index) in products" :key="index">

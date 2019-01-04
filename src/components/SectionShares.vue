@@ -4,7 +4,7 @@
       <h2>Let's now take a look at how these emissions are distributed.</h2>
       <p>Each European country contributes its emissions to the total value. However, the volume varies. Explore the different shares throughout the years here.</p>
     </section>
-    <section class="c-main fullwidth">
+    <section class="c-main">
       <section class="c-controls">
         <div class="c-controls__slider">
           <form>
@@ -24,17 +24,9 @@
           </p>
         </div>
       </section>
-      <SharesGradient :activeYearIndex="rangeValue"/>
-      <!--<ul>
-        <li 
-          v-for="entity in allEntitiesExceptEU"
-          :key="entity.name"
-        >
-        {{entity.name}}
-        {{new Intl.NumberFormat().format(entity.values[rangeValue])}}
-        <strong>{{getPercentage(entity.values[rangeValue], totalValue).toFixed(2)}}</strong>
-        </li>
-      </ul>-->
+      <section class="c-vis">
+        <SharesGradient :activeYearIndex="rangeValue"/>
+      </section>
     </section>
   </article>
 </template>
@@ -83,11 +75,19 @@ div {
   margin-bottom: var(--grid-spacing);
 }
 
-.fullwidth {
+.c-introduction {
   grid-column: span 12;
 }
 
+.c-main {
+  grid-column: span 12;
+  display: grid;
+  grid-gap: var(--grid-spacing);
+  grid-template-columns: repeat(12, 1fr);
+}
+
 .c-controls {
+  grid-column: span 12;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,11 +95,11 @@ div {
 
 .c-controls__value {
   width: 100%;
-  border-color: var(--color-grey-09);
-  border-style: solid;
-  border-top-width: 0.2rem;
-  border-left-width: 0.2rem;
-  border-right-width: 0.2rem;
+  border-color: var(--color-primary);
+  border-style: dashed;
+  border-top-width: 0.1rem;
+  border-left-width: 0.1rem;
+  border-right-width: 0.1rem;
   border-bottom-width: 0;
 }
 
@@ -111,6 +111,11 @@ div {
 
 .c-controls__value p span {
   padding: calc(var(--grid-spacing) / 2);
+  border: .1rem dashed var(--color-primary);
   background-color: white;
+}
+
+.c-vis {
+  grid-column: span 12;
 }
 </style>
