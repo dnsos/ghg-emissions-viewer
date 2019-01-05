@@ -15,7 +15,7 @@
         name="mode-absolute"
         @change="toggleMode"
       >
-      <label :for="'mode-absolute__' + entity.toLowerCase()">Show isolated trend</label>
+      <label :for="'mode-absolute__' + entity.toLowerCase()">Absolute</label>
     </fieldset>
     <!-- SVG ELement for Emissions Gradient -->
     <figure :class="{ active: isActive }" ref="wrapper">
@@ -23,7 +23,7 @@
         <g
           v-for="(value, index) in values"
           :key="index"
-          @mouseover="setActiveValue(value), setActiveYear(index)"
+          @mouseover="setActiveValue(value), setActiveYear(index), setActiveCell(index)"
         >
           <rect
             :x="cellWidth * index"
@@ -35,9 +35,9 @@
           ></rect>
           <rect
             :x="cellWidth * index"
-            :y="0"
+            :y="gradientHeight / 2"
             :width="cellWidth"
-            :height="gradientHeight / 2"
+            :height="gradientHeight"
             :fill="cellColorAbsolute(value)"
             :stroke="cellColorAbsolute(value)"
             v-show="isAbsolute"
@@ -49,12 +49,31 @@
           :y1="gradientHeight / 2"
           :x2="gradientWidth"
           :y2="gradientHeight / 2"
-          stroke="#ff3939"
-          stroke-width="5"
+          stroke="white"
+          stroke-width="1"
         ></line>
+        <g v-show="isActive">
+          <line
+            :x1="cellWidth * activeCell"
+            :y1="gradientHeight * 0.25"
+            :x2="cellWidth * activeCell"
+            :y2="gradientHeight * 0.75"
+            stroke="#ff3939"
+            stroke-width="2"
+          ></line>
+          <line
+            :x1="cellWidth * activeCell + (cellWidth)"
+            :y1="gradientHeight * 0.25"
+            :x2="cellWidth * activeCell + (cellWidth)"
+            :y2="gradientHeight * 0.75"
+            stroke="#ff3939"
+            stroke-width="2"
+          ></line>
+        </g>
       </svg>
     </figure>
-    <p>{{ activeYear }}: {{ new Intl.NumberFormat().format(activeValue.toFixed(0))}}</p>
+    <p class="values__active">{{ activeYear }}: {{ new Intl.NumberFormat().format(activeValue.toFixed(0))}}</p>
+    <p class="percentage__active">{{ 100 - (100 / initialValue * activeValue).toFixed(0) }} %</p>
   </section>
 </template>
 
@@ -78,7 +97,8 @@ export default {
       gradientWidth: 412,
       gradientHeight: 100,
       activeValue: this.values[this.values.length - 1],
-      activeYear: this.intervalStart + this.values.length - 1
+      activeYear: this.intervalStart + this.values.length - 1,
+      activeCell: null
     };
   },
   computed: {
@@ -106,6 +126,9 @@ export default {
     setActiveYear: function(index) {
       this.activeYear = this.intervalStart + index;
     },
+    setActiveCell: function (index) {
+      this.activeCell = index
+    },
     toggleMode: function() {
       this.isAbsolute = !this.isAbsolute;
     }
@@ -124,12 +147,13 @@ export default {
 .c-gradient {
   grid-column: span 1;
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
-    "h h m"
+    "h h h"
     "g g g"
-    "c c c";
+    "c c m"
+    "p p p";
   background-color: white;
 }
 
@@ -146,10 +170,6 @@ fieldset.mode__selector {
   margin: 0;
 }
 
-.mode__selector * {
-  color: var(--color-secondary);
-}
-
 figure {
   grid-area: g;
   width: 100%;
@@ -160,9 +180,16 @@ figure {
   overflow: hidden;
 }
 
-p {
+.values__active {
   grid-area: c;
+  margin-bottom: 0;
   border-top: 0.1rem dashed var(--color-grey-09);
+  color: var(--color-secondary);
+}
+
+.percentage__active {
+  grid-area: p;
+  margin-bottom: 0;
 }
 
 /*figure.active {
