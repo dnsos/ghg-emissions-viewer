@@ -1,24 +1,24 @@
 <template>
   <section
-    class="c-gradient"
+    class="gradient--wrapper"
     :class="{ active: isActive }"
-    :id="'c-gradient__' + entity.toLowerCase()"
+    :id="'gradient--wrapper__' + entity.toLowerCase()"
     v-cloak
     @mouseout="isActive = !isActive"
     @mouseover="isActive = !isActive"
   >
-    <h4>{{entity}}</h4>
-    <fieldset class="mode__selector">
+    <h4 class="gradient--title">{{entity}}</h4>
+    <fieldset class="gradient--modeswitch">
       <input
         type="checkbox"
-        :id="'mode-absolute__' + entity.toLowerCase()"
-        name="mode-absolute"
+        :id="'gradient--modeswitch__' + entity.toLowerCase()"
+        name="gradient--modeswitch"
         @change="toggleMode"
       >
-      <label :for="'mode-absolute__' + entity.toLowerCase()">Absolute</label>
+      <label :for="'gradient--modeswitch__' + entity.toLowerCase()">Show Trend</label>
     </fieldset>
-    <!-- SVG ELement for Emissions Gradient -->
-    <figure :class="{ active: isActive }" ref="wrapper">
+    <span class="gradient--startyear">1990</span><span class="gradient--endyear">2016</span>
+    <figure class="gradient--figure" :class="{ active: isActive }" ref="wrapper">
       <svg :width="gradientWidth" :height="gradientHeight">
         <g
           v-for="(value, index) in values"
@@ -58,22 +58,32 @@
             :y1="gradientHeight * 0.25"
             :x2="cellWidth * activeCell"
             :y2="gradientHeight * 0.75"
-            stroke="#ff3939"
-            stroke-width="2"
+            stroke="white"
+            stroke-width="1"
           ></line>
           <line
             :x1="cellWidth * activeCell + (cellWidth)"
             :y1="gradientHeight * 0.25"
             :x2="cellWidth * activeCell + (cellWidth)"
             :y2="gradientHeight * 0.75"
-            stroke="#ff3939"
-            stroke-width="2"
+            stroke="white"
+            stroke-width="1"
           ></line>
         </g>
       </svg>
     </figure>
-    <p class="values__active">{{ activeYear }}: {{ new Intl.NumberFormat().format(activeValue.toFixed(0))}}</p>
-    <p class="percentage__active">{{ 100 - (100 / initialValue * activeValue).toFixed(0) }} %</p>
+    <div class="selected--year">
+      <span>{{ activeYear }}:</span>
+    </div>
+    <div class="selected--value">
+      <span>{{ new Intl.NumberFormat().format(activeValue.toFixed(0))}} ktǂ</span>
+    </div>
+    <div class="selected--percent__description">
+      <span>Change from 1990:</span>
+    </div>
+    <div class="selected--percent__value">
+      <span>{{ 100 - (100 / initialValue * activeValue).toFixed(0) }} %</span>
+    </div>
   </section>
 </template>
 
@@ -110,12 +120,12 @@ export default {
       // compute color of cell using chroma.js
       //let maxValueDomain = (this.isAbsolute) ? Math.max(...this.values) : this.maxValueRelative
       return chroma
-        .scale(["white", "black"])
+        .scale(["#79cde5", "#1f2a2e"])
         .domain([0, this.maxValueRelative]);
     },
     cellColorAbsolute: function() {
       return chroma
-        .scale(["white", "black"])
+        .scale(["#79cde5", "#1f2a2e"])
         .domain([Math.min(...this.values), Math.max(...this.values)]);
     }
   },
@@ -144,56 +154,88 @@ export default {
 </script>
 
 <style scoped>
-.c-gradient {
+.gradient--wrapper {
   grid-column: span 1;
+  padding: 1rem;
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-gap: calc(var(--grid-spacing) / 4);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
-    "h h h"
-    "g g g"
-    "c c m"
-    "p p p";
-  background-color: white;
+    "header-left header-right"
+    "above-center-left above-center-right"
+    "center center"
+    "footer-first-left footer-first-right"
+    "footer-second-left footer-second-right";
+  background-color: transparent;
 }
 
-h4 {
-  grid-area: h;
+.gradient--title {
+  grid-area: header-left;
   margin-bottom: 0;
-  border-bottom: 0.1rem dashed var(--color-grey-09);
+  /*border-bottom: 0.1rem dashed var(--color-grey-09);*/
 }
 
-fieldset.mode__selector {
-  grid-area: m;
+.gradient--modeswitch {
+  grid-area: header-right;
+  text-align: right;
   border: none;
   padding: 0;
   margin: 0;
+  color: white;
 }
 
-figure {
-  grid-area: g;
+.gradient--figure {
+  grid-area: center;
   width: 100%;
   line-height: 0;
   padding: 0;
   margin: 0;
-  border: none;
+  border: .1rem solid white;
   overflow: hidden;
 }
 
-.values__active {
-  grid-area: c;
-  margin-bottom: 0;
-  border-top: 0.1rem dashed var(--color-grey-09);
-  color: var(--color-secondary);
+.gradient--startyear {
+  grid-area: above-center-left;
+  text-align: left;
+  color: white;
 }
 
-.percentage__active {
-  grid-area: p;
-  margin-bottom: 0;
+.gradient--endyear {
+  grid-area: above-center-right;
+  text-align: right;
+  color: white;
 }
 
-/*figure.active {
-    outline: 8px dashed var(--color-secondary);
-    outline-offset: 0px;
-  }*/
+.selected--year {
+  grid-area: footer-first-left;
+  padding-left: 1rem;
+  border-left: .1rem solid white;
+}
+
+.selected--value {
+  grid-area: footer-first-right;
+  font-weight: 700;
+  text-align: right;
+  padding-right: 1rem;
+  border-right: .1rem solid white;
+}
+
+.selected--percent__description {
+  grid-area: footer-second-left;
+  text-align: left;
+  padding-left: 1rem;
+  border-left: .1rem solid white;
+}
+
+.selected--percent__value {
+  grid-area: footer-second-right;
+  font-weight: 700;
+  text-align: right;
+  padding-right: 1rem;
+  border-right: .1rem solid white;
+}
+
+.gradient--wrapper.active {
+    background-color: rgba(255,255,255,0.2);
+  }
 </style>

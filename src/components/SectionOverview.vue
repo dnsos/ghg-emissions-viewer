@@ -1,7 +1,7 @@
 <template>
   <article class="s-grid s-wrapper">
     <section class="c-introduction">
-      <h2>Overview of data from all EU countries</h2>
+      <h2><span>Overview of data from all EU countries</span></h2>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum natus exercitationem odit sint hic dolorum iure reiciendis itaque dolorem doloremque suscipit expedita sit quam, atque eum nostrum iste in qui.</p>
     </section>
     <section class="s-grid__autofit o-overview">
