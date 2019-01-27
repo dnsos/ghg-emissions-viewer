@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import * as d3 from "d3";
+import * as d3 from "d3"
 
 export default {
   name: "ShareElement",
@@ -31,7 +31,7 @@ export default {
       return {
         x: xScale(startValue),
         width: xScale(endValue - startValue)
-      };
+      }
     }
   },
   mounted: function() {

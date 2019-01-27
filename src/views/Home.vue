@@ -1,11 +1,6 @@
 <template>
   <main>
-    <SectionIntro />
-    <SectionEU />
-    <SectionShares />
-    <SectionComparison />
     <SectionOverview />
-    <SectionAbout />
   </main>
 </template>
 

@@ -10,18 +10,17 @@
 
 <style>
 :root {
-  --color-primary: #003399;
-  --color-secondary: #ff3939;
+  --color-eublue: #003399;
+  --color-lightblue: #79cde5;
+  --color-red: #ff5540;
   --color-grey-76: #3e3e3e;
   --color-grey-20: #cccccc;
   --color-grey-09: #e7e7e7;
   --color-grey-02: #f9f9f9;
   --font-size: 16px;
+  --font-size-small: 12px;
   --font-family: "IBM Plex Sans", sans-serif;
   --grid-spacing: 2.5rem;
-  --color-blue-1: #1451fa;
-  --color-blue-2: #79cde5;
-  --color-red-1: #ff5540;
 }
 
 html {
@@ -31,8 +30,8 @@ html {
 body {
   padding: 0;
   margin: 0;
-  color: var(--color-primary);
-  background-color: var(--color-blue-2);
+  color: var(--color-eublue);
+  background-color: var(--color-lightblue);
   line-height: 1.6;
   font-family: var(--font-family);
   font-size: var(--font-size);
@@ -61,12 +60,13 @@ body {
   }
 
 nav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   padding: calc(var(--grid-spacing) / 2) var(--grid-spacing);
   grid-column: span 12;
   color: white;
-  background-color: var(--color-red-1);
+  background-color: var(--color-red);
 }
 
 [v-cloak] > * { display: none; }
