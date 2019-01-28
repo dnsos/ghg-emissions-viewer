@@ -1,10 +1,10 @@
 <template>
-  <g>
+  <g class="gradient">
     <g v-for="(value, index) in values" :key="index">
       <rect
-        :x="width * index"
+        :x="cellWidth * index"
         y="0"
-        :width="width"
+        :width="cellWidth"
         :height="height"
         :fill="cellColor(value)"
         :stroke="cellColor(value)"

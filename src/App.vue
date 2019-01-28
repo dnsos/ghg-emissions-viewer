@@ -1,9 +1,9 @@
 <template>
   <div id="app" v-cloak>
-    <nav id="nav">
+    <!--<nav id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </nav>
+    </nav>-->
     <router-view/>
   </div>
 </template>
@@ -99,7 +99,10 @@ p {
   margin-bottom: var(--grid-spacing); }
 
 a {
-  color: #1EAEDB; }
+  color: inherit;
+  text-decoration: none;
+  border-bottom: .1rem solid var(--color-eublue);
+  transition: color .2s; }
 a:hover {
-  color: #0FA0CE; }
+  color: white; }
 </style>

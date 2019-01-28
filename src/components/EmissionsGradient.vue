@@ -1,10 +1,10 @@
 <template>
   <section
     class="wrapper"
-    :class="{ active: isActive }"
+    :class="{ active: isHovered }"
     :id="'wrapper--' + entity.toLowerCase()"
-    @mouseover="isActive = !isActive"
-    @mouseout="isActive = !isActive"
+    @mouseover="isHovered = !isHovered"
+    @mouseout="isHovered = !isHovered"
   >
     <h4 class="title--entity">{{entity}}</h4>
     <fieldset class="toggle--trend">
@@ -19,46 +19,26 @@
       <label :for="'toggle--trend__' + entity.toLowerCase()">Trend</label>
     </fieldset>
     <span class="indicator--startyear">1990</span><span class="indicator--endyear">2016</span>
-    <figure class="wrapper--gradient" :class="{ active: isActive }" ref="wrapper">
+    <figure class="wrapper--gradient" :class="{ active: isHovered }" ref="wrapper">
       <svg :width="gradientWidth" :height="gradientHeight">
-        <!--<Gradient 
+        <Gradient 
           :width="gradientWidth"
           :height="gradientHeight"
           :values="values"
           :maxValue="maxValueRelative"
-        />-->
-        <g
-          v-for="(value, index) in values"
-          :key="index"
-          @mouseover="setActiveValue(value), setActiveYear(index), setActiveCell(index)"
-        >
+        />
+        <path v-show="trendIsActive" class="trendpath" :d="trendpathData(values)"></path>
+        <g class="gradient--overlay">
           <rect
+            v-for="(value, index) in values"
+            :key="index"
+            class="overlay-cell"
+            @mouseover="activateCell(value, index)"
             :x="cellWidth * index"
             :y="0"
             :width="cellWidth"
             :height="gradientHeight"
-            :fill="cellColor(value)"
-            :stroke="cellColor(value)"
           ></rect>
-        </g>
-        <path v-show="true" class="trendpath" :d="trendpathData(values)"></path>
-        <g v-show="isActive">
-          <line
-            :x1="cellWidth * activeCell"
-            :y1="gradientHeight * 0.25"
-            :x2="cellWidth * activeCell"
-            :y2="gradientHeight * 0.75"
-            stroke="red"
-            stroke-width="1"
-          ></line>
-          <line
-            :x1="cellWidth * activeCell + (cellWidth)"
-            :y1="gradientHeight * 0.25"
-            :x2="cellWidth * activeCell + (cellWidth)"
-            :y2="gradientHeight * 0.75"
-            stroke="red"
-            stroke-width="1"
-          ></line>
         </g>
       </svg>
     </figure>
@@ -97,42 +77,32 @@ export default {
   data: function() {
     // define svg settings
     return {
-      isActive: false,
+      isHovered: false,
       trendIsActive: false,
       gradientWidth: 412,
       gradientHeight: 100,
+      // set initially displayed value here
       activeValue: this.values[this.values.length - 1],
-      activeYear: this.intervalStart + this.values.length - 1,
-      activeCell: null
-    };
+      activeYear: this.intervalStart + this.values.length - 1
+    }
   },
   computed: {
     cellWidth: function() {
-      // compute width of cell
-      return this.gradientWidth / this.values.length;
+      return this.gradientWidth / this.values.length
     },
     cellColor: function(value) {
-      // compute color of cell using chroma.js
-      //let maxValueDomain = (this.isAbsolute) ? Math.max(...this.values) : this.maxValueRelative
       return chroma
         .scale(["#79cde5", "#1f2a2e"])
-        .domain([0, this.maxValueRelative]);
-    },
-    cellColorAbsolute: function() {
-      return chroma
-        .scale(["#79cde5", "#1f2a2e"])
-        .domain([Math.min(...this.values), Math.max(...this.values)]);
+        .domain([0, this.maxValueRelative])
     },
     trendpathData: function() {
-      // x-scale based on width of gradient and length of input array
       const xScale = d3.scaleLinear()
         .range([0, this.gradientWidth])
-        .domain([0, this.values.length]);
+        .domain([0, this.values.length])
 
-      // y-scale based on height of gradient and min and max values of inpit array (flipped)
       const yScale = d3.scaleLinear()
         .range([0, this.gradientHeight])
-        .domain([Math.max(...this.values), Math.min(...this.values)]);
+        .domain([Math.max(...this.values), Math.min(...this.values)])
 
       // generate path using d3.line and previously defined scales
       return d3
@@ -142,28 +112,21 @@ export default {
     }
   },
   methods: {
-    setActiveValue: function(value) {
-      this.activeValue = value;
-    },
-    setActiveYear: function(index) {
-      this.activeYear = this.intervalStart + index;
-    },
-    setActiveCell: function (index) {
-      this.activeCell = index
+    activateCell: function(value, index) {
+      this.activeYear = this.intervalStart + index
+      this.activeValue = value
     },
     toggleMode: function() {
-      this.trendIsActive = !this.trendIsActive;
+      this.trendIsActive = !this.trendIsActive
     }
-  },
-  created: function() {
   },
   mounted: function() {
     this.gradientWidth = this.$refs.wrapper.offsetWidth
     window.addEventListener("resize", () => {
-      this.gradientWidth = this.$refs.wrapper.offsetWidth;
-    });
+      this.gradientWidth = this.$refs.wrapper.offsetWidth
+    })
   }
-};
+}
 </script>
 
 <style scoped>
@@ -253,7 +216,7 @@ export default {
 }
 
 .wrapper.active {
-    background-color: rgba(255,255,255,0.2);
+    box-shadow: 0 0 1rem rgba(0,0,0,0.15);
   }
 
 .checkbox--trend__wrapper {
@@ -280,6 +243,16 @@ export default {
   stroke: white;
   stroke-width: .1rem;
   fill: transparent;
+}
+
+.overlay-cell {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 1;
+}
+
+.overlay-cell:hover {
+  stroke: white;
 }
 
 .arrow--forward {

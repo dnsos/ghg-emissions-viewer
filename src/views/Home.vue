@@ -1,12 +1,14 @@
 <template>
   <main>
     <SectionOverview />
+    <Footer />
   </main>
 </template>
 
 <script>
 import ComparisonGradient from '@/components/ComparisonGradient.vue'
 import EmissionsGradient from '@/components/EmissionsGradient.vue'
+import Footer from '@/components/Footer.vue'
 
 import SectionIntro from '@/components/SectionIntro.vue'
 import SectionEU from '@/components/SectionEU.vue'
@@ -25,6 +27,7 @@ export default {
   components: {
     ComparisonGradient,
     EmissionsGradient,
+    Footer,
     SectionIntro,
     SectionEU,
     SectionShares,
