@@ -1,6 +1,6 @@
 <template>
-  <article class="s-grid s-wrapper">
-    <section class="c-introduction">
+  <article class="grid--12-columns chapter">
+    <section class="chapter__introduction">
       <h1>Europes Greenhouse Gas Emissions visualised</h1>
       <p>This is a visual explanation of how Europes (EU + some others) Greenhouse Gas Emissions developedin the past decades.</p>
       <h3>Product list</h3>

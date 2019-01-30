@@ -46,7 +46,7 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
-    fetchData (state, data) {
+    defineData (state, data) {
       state.data = data
     },
     reducePrice: (state, payload) => {
@@ -59,7 +59,7 @@ export const store = new Vuex.Store({
     fetchData: ({ commit }) => {
       fetch('data.json')
         .then(response => response.json())
-        .then(json => commit('fetchData', json))
+        .then(json => commit('defineData', json))
     },
     // always perform asynchronous tasks (like API fetching) in 'actions'
     handleReducePrice: (context, payload) => {

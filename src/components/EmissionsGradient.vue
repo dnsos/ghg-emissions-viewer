@@ -2,7 +2,7 @@
   <section
     class="wrapper"
     :class="{ active: isHovered }"
-    :id="'wrapper--' + entity.toLowerCase()"
+    :id="'wrapper__' + entity.toLowerCase()"
     @mouseover="isHovered = !isHovered"
     @mouseout="isHovered = !isHovered"
   >
@@ -27,7 +27,7 @@
           :values="values"
           :maxValue="maxValueRelative"
         />
-        <path v-show="trendIsActive" class="trendpath" :d="trendpathData(values)"></path>
+        <Trendpath v-show="trendIsActive" :values="values" :width="gradientWidth" :height="gradientHeight" />
         <g class="gradient--overlay">
           <rect
             v-for="(value, index) in values"
@@ -59,6 +59,7 @@
 
 <script>
 import Gradient from "@/components/Gradient.vue"
+import Trendpath from "@/components/Trendpath.vue"
 import chroma from "chroma-js"
 import * as d3 from "d3"
 
@@ -72,13 +73,14 @@ export default {
     "maxValueRelative"
   ],
   components: {
-    Gradient
+    Gradient,
+    Trendpath
   },
   data: function() {
     // define svg settings
     return {
       isHovered: false,
-      trendIsActive: false,
+      trendIsActive: true,
       gradientWidth: 412,
       gradientHeight: 100,
       // set initially displayed value here
@@ -94,21 +96,6 @@ export default {
       return chroma
         .scale(["#79cde5", "#1f2a2e"])
         .domain([0, this.maxValueRelative])
-    },
-    trendpathData: function() {
-      const xScale = d3.scaleLinear()
-        .range([0, this.gradientWidth])
-        .domain([0, this.values.length])
-
-      const yScale = d3.scaleLinear()
-        .range([0, this.gradientHeight])
-        .domain([Math.max(...this.values), Math.min(...this.values)])
-
-      // generate path using d3.line and previously defined scales
-      return d3
-        .line(this.values)
-        .x((d, i) => { return xScale(i) + this.cellWidth / 2 })
-        .y((d, i) => { return yScale(d) })
     }
   },
   methods: {
@@ -164,8 +151,6 @@ export default {
   grid-area: center;
   width: 100%;
   line-height: 0;
-  padding: 0;
-  margin: 0;
   border: .1rem solid white;
   overflow: hidden;
 }
@@ -237,12 +222,6 @@ export default {
   opacity: 0;
   margin: 0;
   vertical-align: top;
-}
-
-.trendpath {
-  stroke: white;
-  stroke-width: .1rem;
-  fill: transparent;
 }
 
 .overlay-cell {

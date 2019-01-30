@@ -6,12 +6,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700,700i" rel="stylesheet">
     <title>Greenhouse Gas Emissions Viewer</title>
+    <style>
+      body {
+        background-color: #79cde5;
+      }
+      [v-cloak] > * { display: none; }
+      [v-cloak]::before { 
+        content: "Loading...";
+        font-family: "IBM Plex Sans", sans-serif;
+        color: white;
+      }
+    </style>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but ghg-emissions-viewer doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app" v-cloak></div>
     <!-- built files will be auto injected -->
   </body>
 </html>

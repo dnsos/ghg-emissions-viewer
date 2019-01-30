@@ -1,6 +1,6 @@
 <template>
-  <article class="s-grid s-wrapper">
-    <section class="c-introduction">
+  <article class="grid--12-columns chapter">
+    <section class="chapter__introduction">
       <h2>Let's now take a look at how these emissions are distributed.</h2>
       <p>Each European country contributes its emissions to the total value. However, the volume varies. Explore the different shares throughout the years here.</p>
     </section>
@@ -73,10 +73,6 @@ export default {
 <style scoped>
 div {
   margin-bottom: var(--grid-spacing);
-}
-
-.c-introduction {
-  grid-column: span 12;
 }
 
 .c-main {

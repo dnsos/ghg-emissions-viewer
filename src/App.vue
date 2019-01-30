@@ -23,6 +23,8 @@
   --grid-spacing: 2.5rem;
 }
 
+/* BASICS
+----------------------------------------------------- */
 html {
   font-size: 62.5%;
 }
@@ -44,7 +46,14 @@ body {
   align-items: center;
 }
 
-.s-grid {
+figure {
+  padding: 0;
+  margin: 0;
+}
+
+/* GRIDS
+----------------------------------------------------- */
+.grid--12-columns {
   padding: var(--grid-spacing);
   display: grid;
   grid-gap: var(--grid-spacing);
@@ -52,12 +61,53 @@ body {
   grid-auto-rows: max-content;
 }
 
-.s-grid__autofit {
-    /*padding: var(--grid-spacing);*/
-    display: grid;
-    grid-gap: var(--grid-spacing);
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.grid--autofit {
+  /*padding: var(--grid-spacing);*/
+  display: grid;
+  grid-gap: var(--grid-spacing);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid--autofill-squares {
+  display: grid;
+  grid-gap: calc(var(--grid-spacing) / 2);
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-auto-rows: 1fr;
+}
+
+.grid--autofill-squares::before {
+  content: '';
+  width: 0;
+  padding-bottom: 100%;
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+
+.grid--autofill-squares > *:first-child {
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+
+/* SECTIONS
+----------------------------------------------------- */
+.chapter {
+  max-width: 120rem;
+  min-height: 100vh;
+}
+
+.chapter__introduction {
+  grid-column: span 12;
+}
+
+@media (min-width: 85rem) {
+  .chapter__introduction {
+    grid-column: 4 / 10;
   }
+}
+
+.chapter__content {
+  grid-column: span 12;
+}
 
 nav {
   position: fixed;
@@ -69,40 +119,78 @@ nav {
   background-color: var(--color-red);
 }
 
-[v-cloak] > * { display: none; }
-[v-cloak]::before { content: "Application is loading..."; }
-
-h1, h2, h3, h4, h5, h6 {
+/* TYPOGRAPHY
+----------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   display: block;
   margin-top: 0;
   margin-bottom: var(--grid-spacing);
   font-weight: 700;
-  color: white; }
-h1 { font-size: 4.0rem; line-height: 1.2; }
-h2 { font-size: 3.6rem; line-height: 1.25; }
-h3 { font-size: 3.0rem; line-height: 1.3; }
-h4 { font-size: 2.4rem; line-height: 1.35; }
-h5 { font-size: 1.8rem; line-height: 1.5; }
-h6 { font-size: 1.5rem; line-height: 1.6; }
+  color: white;
+}
+h1 {
+  font-size: 4rem;
+  line-height: 1.2;
+}
+h2 {
+  font-size: 3.6rem;
+  line-height: 1.25;
+}
+h3 {
+  font-size: 3rem;
+  line-height: 1.3;
+}
+h4 {
+  font-size: 2.4rem;
+  line-height: 1.35;
+}
+h5 {
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+h6 {
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
 
 @media (min-width: 550px) {
-  h1 { font-size: calc(var(--font-size) * 3); }
-  h2 { font-size: calc(var(--font-size) * 2.4); }
-  h3 { font-size: calc(var(--font-size) * 1.8); }
-  h4 { font-size: calc(var(--font-size) * 1.4); }
-  h5 { font-size: calc(var(--font-size) * 1.2); }
-  h6 { font-size: var(--font-size); }
+  h1 {
+    font-size: calc(var(--font-size) * 3);
+  }
+  h2 {
+    font-size: calc(var(--font-size) * 2.4);
+  }
+  h3 {
+    font-size: calc(var(--font-size) * 1.8);
+  }
+  h4 {
+    font-size: calc(var(--font-size) * 1.4);
+  }
+  h5 {
+    font-size: calc(var(--font-size) * 1.2);
+  }
+  h6 {
+    font-size: var(--font-size);
+  }
 }
 
 p {
   margin-top: 0;
-  margin-bottom: var(--grid-spacing); }
+  margin-bottom: var(--grid-spacing);
+}
 
 a {
   color: inherit;
   text-decoration: none;
-  border-bottom: .1rem solid var(--color-eublue);
-  transition: color .2s; }
+  border-bottom: 0.1rem solid var(--color-eublue);
+  transition: color 0.2s;
+}
 a:hover {
-  color: white; }
+  color: white;
+}
 </style>

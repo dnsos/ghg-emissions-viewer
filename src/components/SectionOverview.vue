@@ -1,10 +1,10 @@
 <template>
-  <article class="s-grid s-wrapper">
-    <section class="c-introduction">
+  <article class="grid--12-columns chapter">
+    <section class="chapter__introduction">
       <h2><span>Overview of data from all EU countries</span></h2>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum natus exercitationem odit sint hic dolorum iure reiciendis itaque dolorem doloremque suscipit expedita sit quam, atque eum nostrum iste in qui.</p>
     </section>
-    <section class="s-grid__autofit o-overview">
+    <section class="grid--autofit chapter__content">
       <EmissionsGradient
         v-for="entity in allEntitiesExceptEU"
         :key="entity.name"
@@ -23,6 +23,9 @@ import EmissionsGradient from "@/components/EmissionsGradient.vue"
 
 export default {
   name: "SectionOverview",
+  components: {
+    EmissionsGradient
+  },
   data: function() {
     return {}
   },
@@ -38,14 +41,10 @@ export default {
       return Math.max(...maxEntity)
     }
   },
-  components: {
-    EmissionsGradient
+  mounted: function() {
   }
 }
 </script>
 
 <style scoped>
-.o-overview {
-  grid-column: span 12;
-}
 </style>
