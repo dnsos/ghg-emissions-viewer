@@ -70,7 +70,8 @@ export default {
     "entity",
     "values",
     "initialValue",
-    "maxValueRelative"
+    "maxValueRelative",
+    "initialTrendState"
   ],
   components: {
     Gradient,
@@ -80,7 +81,7 @@ export default {
     // define svg settings
     return {
       isHovered: false,
-      trendIsActive: true,
+      trendIsActive: this.initialTrendState,
       gradientWidth: 412,
       gradientHeight: 100,
       // set initially displayed value here

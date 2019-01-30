@@ -51,10 +51,13 @@ figure {
   margin: 0;
 }
 
+fieldset {
+  border: none;
+}
+
 /* GRIDS
 ----------------------------------------------------- */
 .grid--12-columns {
-  padding: var(--grid-spacing);
   display: grid;
   grid-gap: var(--grid-spacing);
   grid-template-columns: repeat(12, 1fr);
@@ -93,6 +96,8 @@ figure {
 .chapter {
   max-width: 120rem;
   min-height: 100vh;
+  padding: 0 var(--grid-spacing);
+  margin-bottom: calc(var(--grid-spacing) * 4);
 }
 
 .chapter__introduction {

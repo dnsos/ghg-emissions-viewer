@@ -13,6 +13,7 @@
         :entity="entity.name"
         :values="entity.values"
         :maxValueRelative="maxValueWithoutEu"
+        :initialTrendState="false"
       />
     </section>
   </article>
