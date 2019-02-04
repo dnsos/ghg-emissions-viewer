@@ -1,14 +1,14 @@
 <template>
   <section
-    class="wrapper"
+    class="explorer"
     :class="{ active: isHovered }"
-    :id="'wrapper__' + entity.toLowerCase()"
+    :id="'explorer__' + entity.toLowerCase()"
     @mouseover="isHovered = !isHovered"
     @mouseout="isHovered = !isHovered"
   >
     <h4 class="title--entity">{{entity}}</h4>
     <fieldset class="toggle--trend">
-      <div class="checkbox--trend__wrapper" :class="{ 'checkbox--trend__active': trendIsActive }">
+      <div class="checkbox--custom" :checked="trendIsActive">
         <input
           type="checkbox"
           :id="'toggle--trend__' + entity.toLowerCase()"
@@ -61,7 +61,6 @@
 import Gradient from "@/components/Gradient.vue"
 import Trendpath from "@/components/Trendpath.vue"
 import chroma from "chroma-js"
-import * as d3 from "d3"
 
 export default {
   name: "EmissionsGradient",
@@ -118,7 +117,7 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.explorer {
   grid-column: span 1;
   padding: 1rem;
   display: grid;
@@ -201,29 +200,14 @@ export default {
   border-right: .1rem solid white;
 }
 
-.wrapper.active {
-    box-shadow: 0 0 1rem rgba(0,0,0,0.15);
-  }
-
-.checkbox--trend__wrapper {
-  display: inline-block;
-  width: 1.2rem;
-  height: 1.2rem;
-  margin-right: .8rem;
-  vertical-align: middle;
-  background-color: transparent;
-  border: .1rem solid white;
-}
-
-.checkbox--trend__wrapper.checkbox--trend__active {
+.indicator--active-value span, .indicator--active-change span {
+  padding: 0 .5rem;
   background-color: white;
 }
 
-.checkbox--trend__wrapper input {
-  opacity: 0;
-  margin: 0;
-  vertical-align: top;
-}
+.wrapper.active {
+    box-shadow: 0 0 1rem rgba(0,0,0,0.15);
+  }
 
 .overlay-cell {
   fill: transparent;

@@ -3,6 +3,17 @@
     <section class="chapter__introduction">
       <h2><span>Overview of data from all EU countries</span></h2>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum natus exercitationem odit sint hic dolorum iure reiciendis itaque dolorem doloremque suscipit expedita sit quam, atque eum nostrum iste in qui.</p>
+      <fieldset>
+        <div class="checkbox--custom" :checked="allTrendsAreActive">
+          <input 
+            type="checkbox" 
+            name="toggle-all-trends" 
+            id="toggle-all-trends"
+            v-model="allTrendsAreActive"
+          >
+        </div>
+        <label for="toggle-all-trends">Show all trends</label>
+      </fieldset>
     </section>
     <section class="grid--autofit chapter__content">
       <EmissionsGradient
@@ -13,7 +24,7 @@
         :entity="entity.name"
         :values="entity.values"
         :maxValueRelative="maxValueWithoutEu"
-        :initialTrendState="false"
+        :initialTrendState="allTrendsAreActive"
       />
     </section>
   </article>
@@ -28,7 +39,9 @@ export default {
     EmissionsGradient
   },
   data: function() {
-    return {}
+    return {
+      allTrendsAreActive: true
+    }
   },
   computed: {
     intervalStart: function() {
@@ -41,6 +54,8 @@ export default {
       let maxEntity = this.allEntitiesExceptEU.map(entity => Math.max(...entity.values))
       return Math.max(...maxEntity)
     }
+  },
+  methods: {
   },
   mounted: function() {
   }

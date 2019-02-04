@@ -46,6 +46,8 @@ body {
   align-items: center;
 }
 
+/* COMPONENTS
+----------------------------------------------------- */
 figure {
   padding: 0;
   margin: 0;
@@ -53,6 +55,26 @@ figure {
 
 fieldset {
   border: none;
+}
+
+.checkbox--custom input {
+  opacity: 0;
+  margin: 0;
+  vertical-align: top;
+}
+
+.checkbox--custom {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: .8rem;
+  vertical-align: middle;
+  background-color: transparent;
+  border: .1rem solid white;
+}
+
+.checkbox--custom[checked] {
+  background-color: white;
 }
 
 /* GRIDS

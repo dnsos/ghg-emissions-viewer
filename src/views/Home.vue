@@ -1,6 +1,7 @@
 <template>
   <main>
     <SectionEU />
+    <SectionCountriesTrends />
     <SectionContextualisation />
     <SectionOverview />
     <SectionAbout />
@@ -13,6 +14,7 @@ import EmissionsGradient from '@/components/EmissionsGradient.vue'
 
 import SectionIntro from '@/components/SectionIntro.vue'
 import SectionEU from '@/components/SectionEU.vue'
+import SectionCountriesTrends from '@/components/SectionCountriesTrends.vue'
 import SectionContextualisation from '@/components/SectionContextualisation.vue'
 import SectionShares from '@/components/SectionShares.vue'
 import SectionComparison from '@/components/SectionComparison.vue'
@@ -30,6 +32,7 @@ export default {
     EmissionsGradient,
     SectionIntro,
     SectionEU,
+    SectionCountriesTrends,
     SectionContextualisation,
     SectionShares,
     SectionComparison,

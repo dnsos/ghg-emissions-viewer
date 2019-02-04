@@ -26,7 +26,7 @@
             :style="{ 'background-color': cellColor(entity.values[rangeValue]) }"
         >
             <p class="share__entity">{{ entity.name }}</p>
-            <p class="share__value">{{  new Intl.NumberFormat().format(entity.values[rangeValue].toFixed(0)) }} ktǂ</p>
+            <p class="share__value"><span>{{  new Intl.NumberFormat().format(entity.values[rangeValue].toFixed(0)) }} ktǂ</span></p>
         </div>
     </section>
   </article>
@@ -77,17 +77,26 @@ export default {
 }
 
 .share * {
-    color: white;
     margin-bottom: 0;
     text-align: center;
     line-height: 1.2;
 }
 
-.share__entity {
+.share__entity, .share__value {
     font-weight: 700;
+}
+
+.share__entity {
+    color: white;
 }
 
 .share__value {
     font-size: var(--font-size-small);
+    color: var(--color-eublue);
+}
+
+.share__value span {
+    padding: 0 .2rem;
+    background-color: white;
 }
 </style>
