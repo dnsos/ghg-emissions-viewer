@@ -2,31 +2,46 @@
   <article class="grid--12-columns chapter">
     <section class="chapter__introduction">
       <p>Let's now take a look at individual countries.</p>
-      <figure>
-          <svg class="chart" height="500" width="800">
-              <g>
-                  <text 
-                    v-for="entity in allEntitiesExceptEU"
-                    :key="entity.name">
-                {{ entity.name }}
-                  </text>
-              </g>
-          </svg>
-      </figure>
-      <p>Most countries set themselves reduction goals of around 20%, so these are good numbers.</p>
     </section>
+    <section class="grid--autofit chapter__content">
+        <section
+            v-for="entity in allEntitiesExceptEU"
+            :key="entity.name"
+            >
+            <h5>{{ entity.name }}</h5>
+            <figure ref="trendwrapper">
+                <svg class="chart" :width="trendWidth" :height="trendHeight" >
+                    <g>
+                        <Trendpath :values="entity.values" :width="trendWidth" :height="trendHeight" />
+                    </g>
+                </svg>
+            </figure>
+            <section class="indicators">
+                <span class="indicator__first-value">{{ new Intl.NumberFormat().format(entity.values[0].toFixed(0)) }} ktǂ</span>
+                <span class="indicator__change">
+                    <i :class="[entity.values[entity.values.length -1 ] < entity.values[0] ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>
+                    {{ Math.abs(100 - (100 / entity.values[0] * entity.values[entity.values.length - 1]).toFixed(0)) }} %
+                </span>
+                <span class="indicator__last-value">{{ new Intl.NumberFormat().format(entity.values[entity.values.length - 1].toFixed(0)) }} ktǂ</span>
+            </section>
+        </section>
+      </section>
   </article>
 </template>
 
 <script>
 import * as d3 from "d3"
+import Trendpath from "@/components/Trendpath.vue"
 
 export default {
   name: "SectionCountriesTrends",
   components: {
+      Trendpath
   },
   data: function() {
     return {
+        trendWidth: 350,
+        trendHeight: 100
     }
   },
   computed: {
@@ -35,45 +50,36 @@ export default {
     }
   },
   methods: {
-    initialiseChart: function() {
-        this.drawChart()
-    },
-    drawChart: function() {
-        console.log("Chart has been drawn")
-
-        d3.select(this.chartData.selector)
-            .append("text")
-            .attr("x", 20)
-            .attr("y", 20)
-            .style("text-anchor", "left")
-            .text(this.chartData.title)
-
-        d3.select(this.chartData.selector)
-            .selectAll("g")
-            .data(this.chartData.data)
-            .enter().append("g")
-            .append("rect")
-            .attr("width", function (d) {
-                return d;
-            }).attr("height", 20)
-            .attr("y", function (d, i) {
-                return (i + 1.5) * 20 + i
-            }).attr("x", 0)
-    }
   },
-  watch: {
-    'allEntitiesExceptEU': {
-        handler: function (val) {
-            this.refreshChart();
-        },
-        deep: true
-    }
-},
   mounted: function() {
-    this.initialiseChart()
+    //this.trendWidth = this.$refs.trendwrapper.offsetWidth;
+    
+    window.addEventListener("resize", () => {
+      this.trendWidth = this.$refs.trendwrapper.offsetWidth
+    })
   }
 }
 </script>
 
 <style scoped>
+.indicators {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    padding-top: calc(var(--grid-spacing) / 2);
+    margin-top: calc(var(--grid-spacing) / 2);
+    border-top: .1rem solid var(--color-eublue);
+}
+
+.indicator__first-value, .indicator__last-value {
+    font-size: var(--font-size-small);
+}
+
+.indicator__change {
+    font-weight: 700;
+    background-color: white;
+}
+
+.indicator__last-value {
+    text-align: right;
+}
 </style>

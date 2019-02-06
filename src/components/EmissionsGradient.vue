@@ -43,16 +43,19 @@
       </svg>
     </figure>
     <div class="indicator--active-year">
-      <span>{{ activeYear }}:</span>
+      <span>{{ activeYear }}</span>
     </div>
     <div class="indicator--active-value">
       <span>{{ new Intl.NumberFormat().format(activeValue.toFixed(0))}} ktǂ</span>
     </div>
     <div class="indicator--change-description">
-      <span>Change from 1990:</span>
+      <span>Change from {{ intervalStart }}</span>
     </div>
     <div class="indicator--active-change" v-show="activeValue != initialValue">
-      <i :class="[activeValue < initialValue ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i><span>{{ Math.abs(100 - (100 / initialValue * activeValue).toFixed(0)) }} %</span>
+      <span>
+        <i :class="[activeValue < initialValue ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>
+        {{ Math.abs(100 - (100 / initialValue * activeValue).toFixed(0)) }} %
+      </span>
     </div>
   </section>
 </template>
@@ -175,6 +178,7 @@ export default {
   grid-area: footer-first-left;
   padding-left: 1rem;
   border-left: .1rem solid white;
+  font-weight: 700;
 }
 
 .indicator--active-value {
@@ -217,22 +221,5 @@ export default {
 
 .overlay-cell:hover {
   stroke: white;
-}
-
-.arrow--forward {
-  display: inline-block;
-  width: 2.4rem;
-  height: 2.4rem;
-  vertical-align: top;
-  background-image: url("../assets/arrow_forward.svg");
-  transition: transform .25s;
-}
-
-.arrow--decreasing {
-  transform: rotate(45deg);
-}
-
-.arrow--increasing {
-  transform: rotate(-45deg);
 }
 </style>

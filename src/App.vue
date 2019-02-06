@@ -77,6 +77,23 @@ fieldset {
   background-color: white;
 }
 
+.arrow--forward {
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  vertical-align: top;
+  background-image: url("assets/arrow_forward.svg");
+  transition: transform .25s;
+}
+
+.arrow--decreasing {
+  transform: rotate(45deg);
+}
+
+.arrow--increasing {
+  transform: rotate(-45deg);
+}
+
 /* GRIDS
 ----------------------------------------------------- */
 .grid--12-columns {
