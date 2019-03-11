@@ -30,8 +30,16 @@ export const store = new Vuex.Store({
       return euEntity
     },
     allEntitiesExceptEU: (state) => {
-      let allEntitiesExceptEU = state.data.entities.filter(entity => entity.name !== 'EU')
+      let allEntitiesExceptEU = state.data.entities.filter(entity => {
+        return entity.name !== 'EU'
+      })
       return allEntitiesExceptEU
+    },
+    eu28Entities: (state) => {
+      let eu28Entities = state.data.entities.filter(entity => {
+        return entity.name !== 'EU' && entity.name !== 'Turkey' && entity.name !== 'Switzerland' && entity.name !== 'Norway' && entity.name !== 'Liechtenstein' && entity.name !== 'Iceland'
+      })
+      return eu28Entities
     },
     sharesOrderedByYear: (state) => {
       let shares = []

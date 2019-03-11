@@ -17,7 +17,7 @@
     </section>
     <section class="grid--autofit chapter__content">
       <EmissionsGradient
-        v-for="entity in allEntitiesExceptEU"
+        v-for="entity in eu28Entities"
         :key="entity.name"
         :intervalStart="intervalStart"
         :initialValue="entity.values[0]"
@@ -47,17 +47,13 @@ export default {
     intervalStart: function() {
       return this.$store.state.data.intervalStart
     },
-    allEntitiesExceptEU: function() {
-      return this.$store.getters.allEntitiesExceptEU
+    eu28Entities: function() {
+      return this.$store.getters.eu28Entities
     },
     maxValueWithoutEu: function () {
-      let maxEntity = this.allEntitiesExceptEU.map(entity => Math.max(...entity.values))
+      let maxEntity = this.eu28Entities.map(entity => Math.max(...entity.values))
       return Math.max(...maxEntity)
     }
-  },
-  methods: {
-  },
-  mounted: function() {
   }
 }
 </script>

@@ -10,7 +10,7 @@
             <input
               type="range"
               min="0"
-              :max="allEntitiesExceptEU[rangeValue].values.length - 1"
+              :max="eu28Entities[rangeValue].values.length - 1"
               step="1"
               v-model.number="rangeValue"
             >
@@ -19,7 +19,7 @@
     </section>
     <section class="grid--autofill-squares chapter__content">
         <div
-            v-for="entity in allEntitiesExceptEU"
+            v-for="entity in eu28Entities"
             :key="entity.name"
             class="share"
             :id="'share__' + entity.name.toLowerCase()"
@@ -45,8 +45,8 @@ export default {
     }
   },
   computed: {
-    allEntitiesExceptEU: function() {
-        return this.$store.getters.allEntitiesExceptEU
+    eu28Entities: function() {
+        return this.$store.getters.eu28Entities
     },
     cellColor: function(value) {
       return chroma

@@ -11,7 +11,7 @@
             <input
               type="range"
               min="0"
-              :max="allEntitiesExceptEU[rangeValue].values.length - 1"
+              :max="eu28Entities[rangeValue].values.length - 1"
               step="1"
               v-model.number="rangeValue"
             >
@@ -46,7 +46,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["allEntitiesExceptEU"]),
+    ...mapGetters(["eu28Entities"]),
     intervalStart: function() {
       return this.$store.state.data.intervalStart;
     },
@@ -55,7 +55,7 @@ export default {
     },
     totalValue: function() {
       let val = 0;
-      this.allEntitiesExceptEU.forEach(entity => {
+      this.eu28Entities.forEach(entity => {
         val += entity.values[this.rangeValue];
       });
       return val;

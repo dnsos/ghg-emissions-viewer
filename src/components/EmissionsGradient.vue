@@ -85,13 +85,14 @@ export default {
       isHovered: false,
       trendIsActive: this.initialTrendState,
       gradientWidth: 412,
-      gradientHeight: 100,
-      // set initially displayed value here
       activeValue: this.values[this.values.length - 1],
       activeYear: this.intervalStart + this.values.length - 1
     }
   },
   computed: {
+    gradientHeight: function () {
+      return this.gradientWidth / 3
+    },
     cellWidth: function() {
       return this.gradientWidth / this.values.length
     },
