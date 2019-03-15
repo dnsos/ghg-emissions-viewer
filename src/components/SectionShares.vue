@@ -1,6 +1,6 @@
 <template>
   <article class="grid--12-columns chapter">
-    <section class="chapter__introduction">
+    <section class="chapter__block">
       <h2>Let's now take a look at how these emissions are distributed.</h2>
       <p>Each European country contributes its emissions to the total value. However, the volume varies. Explore the different shares throughout the years here.</p>
     </section>

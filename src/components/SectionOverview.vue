@@ -1,8 +1,8 @@
 <template>
-  <article class="grid--12-columns chapter">
-    <section class="chapter__introduction">
-      <h2><span>Overview of data from all EU countries</span></h2>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum natus exercitationem odit sint hic dolorum iure reiciendis itaque dolorem doloremque suscipit expedita sit quam, atque eum nostrum iste in qui.</p>
+  <article class="grid--12-columns chapter chapter--overview">
+    <section class="chapter__block">
+      <p>With the visual representations of all EU members simultaneously visible, it is now possible to explore and compare the developments in different contexts.</p>
+      <figure>Stacked overview of explorers</figure>
       <fieldset>
         <div class="checkbox--custom" :checked="allTrendsAreActive">
           <input 
@@ -15,7 +15,7 @@
         <label for="toggle-all-trends">Show all trends</label>
       </fieldset>
     </section>
-    <section class="grid--autofit chapter__content">
+    <section class="grid--autofit chapter__block chapter__block--wide">
       <EmissionsGradient
         v-for="entity in eu28Entities"
         :key="entity.name"

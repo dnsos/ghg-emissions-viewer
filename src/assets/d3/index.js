@@ -3,9 +3,10 @@ import { select, selectAll } from 'd3-selection'
 import {
   scaleLinear,
   scaleTime,
-  scaleOrdinal,
-  schemeCategory10
+  scaleOrdinal
 } from 'd3-scale'
+
+import { format } from 'd3-format'
 
 import { max, min, deviation } from 'd3-array'
 
@@ -15,7 +16,7 @@ export default {
   scaleLinear,
   scaleTime,
   scaleOrdinal,
-  schemeCategory10,
+  format,
   max,
   min,
   deviation

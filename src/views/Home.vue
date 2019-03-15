@@ -3,21 +3,21 @@
     <SectionEU />
     <SectionCountriesTrends />
     <SectionContextualisation />
+    <SectionComparison />
+    <SectionDetail />
     <SectionOverview />
     <SectionAbout />
   </main>
 </template>
 
 <script>
-import ComparisonGradient from '@/components/ComparisonGradient.vue'
 import EmissionsGradient from '@/components/EmissionsGradient.vue'
-
-import SectionIntro from '@/components/SectionIntro.vue'
 import SectionEU from '@/components/SectionEU.vue'
 import SectionCountriesTrends from '@/components/SectionCountriesTrends.vue'
 import SectionContextualisation from '@/components/SectionContextualisation.vue'
 import SectionShares from '@/components/SectionShares.vue'
 import SectionComparison from '@/components/SectionComparison.vue'
+import SectionDetail from '@/components/SectionDetail.vue'
 import SectionOverview from '@/components/SectionOverview.vue'
 import SectionAbout from '@/components/SectionAbout.vue'
 
@@ -28,14 +28,13 @@ export default {
     }
   },
   components: {
-    ComparisonGradient,
     EmissionsGradient,
-    SectionIntro,
     SectionEU,
     SectionCountriesTrends,
     SectionContextualisation,
     SectionShares,
     SectionComparison,
+    SectionDetail,
     SectionOverview,
     SectionAbout
   }
@@ -43,13 +42,7 @@ export default {
 </script>
 
 <style>
-  .c-main {
-    grid-column: span 12;
-  }
-
-  @media (min-width: 85rem) {
-    .c-main {
-      grid-column: span 8;
-    }
+  main > *:first-child {
+    padding-top: var(--grid-spacing);
   }
 </style>

@@ -7,7 +7,7 @@
     @mouseout="isHovered = !isHovered"
   >
     <h4 class="title--entity">{{entity}}</h4>
-    <fieldset class="toggle--trend">
+    <!--<fieldset class="toggle--trend">
       <div class="checkbox--custom" :checked="trendIsActive">
         <input
           type="checkbox"
@@ -17,7 +17,7 @@
         >
       </div>
       <label :for="'toggle--trend__' + entity.toLowerCase()">Trend</label>
-    </fieldset>
+    </fieldset>-->
     <span class="indicator--startyear">1990</span><span class="indicator--endyear">2016</span>
     <figure class="wrapper--gradient" :class="{ active: isHovered }" ref="wrapper">
       <svg :width="gradientWidth" :height="gradientHeight">
@@ -46,7 +46,7 @@
       <span>{{ activeYear }}</span>
     </div>
     <div class="indicator--active-value">
-      <span>{{ new Intl.NumberFormat().format(activeValue.toFixed(0))}} ktǂ</span>
+      <span>{{ format(activeValue)}} ktǂ</span>
     </div>
     <div class="indicator--change-description">
       <span>Change from {{ intervalStart }}</span>
@@ -54,7 +54,7 @@
     <div class="indicator--active-change" v-show="activeValue != initialValue">
       <span>
         <i :class="[activeValue < initialValue ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>
-        {{ Math.abs(100 - (100 / initialValue * activeValue).toFixed(0)) }} %
+        {{ Math.abs(getPercentageChange(initialValue, activeValue).toFixed(0)) }} %
       </span>
     </div>
   </section>
@@ -123,7 +123,6 @@ export default {
 <style scoped>
 .explorer {
   grid-column: span 1;
-  padding: 1rem;
   display: grid;
   grid-gap: calc(var(--grid-spacing) / 4);
   grid-template-columns: repeat(2, 1fr);
@@ -155,7 +154,7 @@ export default {
   grid-area: center;
   width: 100%;
   line-height: 0;
-  border: .1rem solid white;
+  border: .1rem dashed white;
   overflow: hidden;
 }
 

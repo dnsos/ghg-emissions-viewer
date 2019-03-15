@@ -51,6 +51,7 @@ body {
 figure {
   padding: 0;
   margin: 0;
+  border: .1rem dashed white; /* TODO: Remove. For layouting purposes */
 }
 
 fieldset {
@@ -94,6 +95,12 @@ fieldset {
   transform: rotate(-45deg);
 }
 
+.indicator__change {
+    padding: 0 .5rem;
+    font-weight: 700;
+    background-color: white;
+}
+
 /* GRIDS
 ----------------------------------------------------- */
 .grid--12-columns {
@@ -134,22 +141,25 @@ fieldset {
 ----------------------------------------------------- */
 .chapter {
   max-width: 120rem;
-  min-height: 100vh;
-  padding: 0 var(--grid-spacing);
-  margin-bottom: calc(var(--grid-spacing) * 4);
+  padding: 0 var(--grid-spacing) var(--grid-spacing);
+  border: .1rem dashed white; /* TODO: Remove. Helper for dividing sections */
 }
 
-.chapter__introduction {
+.chapter__block {
   grid-column: span 12;
 }
 
+.chapter__block > *:last-child {
+  margin-bottom: 0;
+}
+
 @media (min-width: 85rem) {
-  .chapter__introduction {
+  .chapter__block {
     grid-column: 4 / 10;
   }
 }
 
-.chapter__content {
+.chapter__block--wide {
   grid-column: span 12;
 }
 
@@ -231,8 +241,8 @@ p {
 a {
   color: inherit;
   text-decoration: none;
-  border-bottom: 0.1rem solid var(--color-eublue);
-  transition: color 0.2s;
+  border-bottom: .1rem dashed white;
+  transition: color 0.1s;
 }
 a:hover {
   color: white;

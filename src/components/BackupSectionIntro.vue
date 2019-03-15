@@ -26,7 +26,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'SectionIntro',
+  name: 'BackupSectionIntro',
   props: [],
   data: function () {
     return {

@@ -1,11 +1,16 @@
 <template>
-  <article class="grid--12-columns chapter">
-    <section class="chapter__introduction">
-      <p>However, 20% for countries like Malta, Liechtenstein or Iceland is not the same as 20% for an industrial nation like France or Germany.</p>
-      <p>Imagine this blue rectangle as representing zero emissions and this black rectangle as representing the highest emitted value within the EU members.</p>
-      <p>Now let's see how much Greenhouse Gases each country actually emits. Here we show the most recent emission values from 2016.</p>
+  <article class="grid--12-columns chapter chapter--contextualisation">
+    <section class="chapter__block">
+      <p>Most countries reduced their emissions while only few reported increases. Let’s look exemplarily at Cyprus and Germany.</p>
     </section>
-    <section class="shares__controls">
+    <section class="chapter__block">
+      <figure>Two Boxes Cyprus & Germany</figure>
+    </section>
+    <section class="chapter__block">
+      <p>The <span class="indicator__change"> 5X % </span> increase of Cyprus is certainly not [good] and Germany’s reduction of <span class="indicator__change">26 %</span> a step in the right direction. Still, when looking at the actual emission values, we see that in the [relevant] year Germany emitted way more CO2 equivalent than Cyprus did.</p>
+      <figure>Switch + Key</figure>
+    </section>
+    <!-- <section class="shares__controls">
         <fieldset>
             <input
               type="range"
@@ -28,7 +33,7 @@
             <p class="share__entity">{{ entity.name }}</p>
             <p class="share__value"><span>{{  new Intl.NumberFormat().format(entity.values[rangeValue].toFixed(0)) }} ktǂ</span></p>
         </div>
-    </section>
+    </section>-->
   </article>
 </template>
 
@@ -55,9 +60,18 @@ export default {
     },
     activeYear: function() {
       return 1990 + this.rangeValue;
-    },
+    }/*,
+    germanyChange: function() {
+      const valueFirstYear = this.eu28Entities['Germany'].values[0],
+            valueLastYear = this.eu28Entities['Germany'].values[this.eu28Entities['Germany'].values.length - 1]
+      return this.getPercentageChange(valueFirstYear, valueLastYear).toFixed(1)
+    }*/
   },
-  mounted: function() {
+  methods: {
+    getPercentageChange: function (previousValue, currentValue) {
+      let changeValue = previousValue - currentValue
+      return - (changeValue / previousValue) * 100
+    }
   }
 }
 </script>

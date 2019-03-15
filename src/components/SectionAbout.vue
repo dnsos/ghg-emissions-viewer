@@ -1,5 +1,5 @@
 <template>
-  <article class="grid--12-columns chapter">
+  <article class="grid--12-columns chapter chapter--about">
     <section class="footer--metadata">
       <h3>Dataset</h3>
       <p>Pollutants: Greenhouse gases (CO2, N2O in CO2 equivalent, CH4 in CO2 equivalent, HFC in CO2 equivalent, PFC in CO2 equivalent, SF6 in CO2 equivalent, NF3 in CO2 equivalent).</p>

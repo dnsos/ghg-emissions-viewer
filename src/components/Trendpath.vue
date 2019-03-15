@@ -21,7 +21,7 @@ export default {
       const yScale = d3
         .scaleLinear()
         .range([0, this.height])
-        .domain([Math.max(...this.values), Math.min(...this.values)])
+        .domain([this.values[0] * 1.72, this.values[0] * 0.28]) // domain between highest deviation (~72%) positive and negative TODO: build lookup for highest value
 
       // generate path using d3.line and previously defined scales
       return d3
