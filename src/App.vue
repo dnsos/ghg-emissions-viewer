@@ -95,14 +95,64 @@ fieldset {
   transform: rotate(-45deg);
 }
 
-.indicator__change {
+.indicator {
+  color: white;
+}
+
+.indicator--left-aligned {
+  text-align: left;
+}
+
+.indicator--right-aligned {
+  text-align: right;
+}
+
+.indicator--small-font {
+  font-size: var(--font-size-small);
+}
+
+.indicator--highlighted {
     padding: 0 .5rem;
     font-weight: 700;
+    color: var(--color-eublue);
     background-color: white;
 }
 
 /* GRIDS
 ----------------------------------------------------- */
+.grid--table {
+  display: grid;
+  grid-gap: calc(var(--grid-spacing) / 4);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "header-left header-right"
+    "center center"
+    "footer-left footer-right";
+  background-color: transparent;
+}
+
+.grid--table > .header-left {
+  grid-area: header-left;
+}
+
+.grid--table > .header-right {
+  grid-area: header-right;
+  text-align: right;
+}
+
+.grid--table > .center {
+  grid-area: center;
+}
+
+.grid--table > .footer-left {
+  grid-area: footer-left;
+}
+
+.grid--table > .footer-right {
+  grid-area: footer-right;
+  text-align: right;
+}
+
 .grid--12-columns {
   display: grid;
   grid-gap: var(--grid-spacing);
@@ -120,7 +170,7 @@ fieldset {
 .grid--autofill-squares {
   display: grid;
   grid-gap: calc(var(--grid-spacing) / 2);
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-auto-rows: 1fr;
 }
 
@@ -142,7 +192,7 @@ fieldset {
 .chapter {
   max-width: 120rem;
   padding: 0 var(--grid-spacing) var(--grid-spacing);
-  border: .1rem dashed white; /* TODO: Remove. Helper for dividing sections */
+  border: .1rem dashed transparent; /* TODO: Remove. Helper for dividing sections */
 }
 
 .chapter__block {

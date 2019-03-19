@@ -8,6 +8,7 @@
   "entities": [
     {
       "name": "EU",
+      "code": "EU",
       "values": [
         5719571.03,
         5620120.02,
@@ -40,6 +41,7 @@
     },
     {
       "name": "Belgium",
+      "code": "BE",
       "values": [
         149806.51,
         151911.85,
@@ -72,6 +74,7 @@
     },
     {
       "name": "Bulgaria",
+      "code": "BG",
       "values": [
         104708.56,
         82801.43,
@@ -104,6 +107,7 @@
     },
     {
       "name": "Czechia",
+      "code": "CZ",
       "values": [
         200125.59,
         181220.06,
@@ -136,6 +140,7 @@
     },
     {
       "name": "Denmark",
+      "code": "DK",
       "values": [
         72155.76,
         82727.7,
@@ -168,6 +173,7 @@
     },
     {
       "name": "Germany",
+      "code": "DE",
       "values": [
         1263708.03,
         1216618.77,
@@ -200,6 +206,7 @@
     },
     {
       "name": "Estonia",
+      "code": "EE",
       "values": [
         40505.28,
         37346.5,
@@ -232,6 +239,7 @@
     },
     {
       "name": "Ireland",
+      "code": "IE",
       "values": [
         56570.84,
         57215.68,
@@ -264,6 +272,7 @@
     },
     {
       "name": "Greece",
+      "code": "EL",
       "values": [
         105597.46,
         105324.56,
@@ -296,6 +305,7 @@
     },
     {
       "name": "Spain",
+      "code": "ES",
       "values": [
         292485.86,
         300501.79,
@@ -328,6 +338,7 @@
     },
     {
       "name": "France",
+      "code": "FR",
       "values": [
         555054.91,
         581968.39,
@@ -360,6 +371,7 @@
     },
     {
       "name": "Croatia",
+      "code": "HR",
       "values": [
         32395.08,
         25166.61,
@@ -392,6 +404,7 @@
     },
     {
       "name": "Italy",
+      "code": "IT",
       "values": [
         522684.6,
         525115.29,
@@ -424,6 +437,7 @@
     },
     {
       "name": "Cyprus",
+      "code": "CY",
       "values": [
         6315.42,
         6952.29,
@@ -456,6 +470,7 @@
     },
     {
       "name": "Latvia",
+      "code": "LV",
       "values": [
         26692.97,
         24791.12,
@@ -488,6 +503,7 @@
     },
     {
       "name": "Lithuania",
+      "code": "LT",
       "values": [
         48510.13,
         50593.1,
@@ -520,6 +536,7 @@
     },
     {
       "name": "Luxembourg",
+      "code": "LU",
       "values": [
         13175.42,
         13825.14,
@@ -552,6 +569,7 @@
     },
     {
       "name": "Hungary",
+      "code": "HU",
       "values": [
         94297.97,
         87518.86,
@@ -584,6 +602,7 @@
     },
     {
       "name": "Malta",
+      "code": "MT",
       "values": [
         2300.2,
         2465.08,
@@ -616,6 +635,7 @@
     },
     {
       "name": "Netherlands",
+      "code": "NL",
       "values": [
         225930.66,
         233804.8,
@@ -648,6 +668,7 @@
     },
     {
       "name": "Austria",
+      "code": "AT",
       "values": [
         79585.59,
         83500.26,
@@ -680,6 +701,7 @@
     },
     {
       "name": "Poland",
+      "code": "PL",
       "values": [
         467907.54,
         456118.04,
@@ -712,6 +734,7 @@
     },
     {
       "name": "Portugal",
+      "code": "PT",
       "values": [
         61480.1,
         63289,
@@ -744,6 +767,7 @@
     },
     {
       "name": "Romania",
+      "code": "RO",
       "values": [
         247544.75,
         203666.3,
@@ -776,6 +800,7 @@
     },
     {
       "name": "Slovenia",
+      "code": "SI",
       "values": [
         18676.74,
         17350.02,
@@ -808,6 +833,7 @@
     },
     {
       "name": "Slovakia",
+      "code": "SK",
       "values": [
         74047.61,
         64457.34,
@@ -840,6 +866,7 @@
     },
     {
       "name": "Finland",
+      "code": "FI",
       "values": [
         72325.71,
         70033.28,
@@ -872,6 +899,7 @@
     },
     {
       "name": "Sweden",
+      "code": "SE",
       "values": [
         72868.93,
         72798.7,
@@ -904,6 +932,7 @@
     },
     {
       "name": "United Kingdom",
+      "code": "UK",
       "values": [
         812112.82,
         821038.09,

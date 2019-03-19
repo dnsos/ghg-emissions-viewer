@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import EmissionsGradient from '@/components/EmissionsGradient.vue'
 import SectionEU from '@/components/SectionEU.vue'
 import SectionCountriesTrends from '@/components/SectionCountriesTrends.vue'
 import SectionContextualisation from '@/components/SectionContextualisation.vue'
@@ -28,7 +27,6 @@ export default {
     }
   },
   components: {
-    EmissionsGradient,
     SectionEU,
     SectionCountriesTrends,
     SectionContextualisation,

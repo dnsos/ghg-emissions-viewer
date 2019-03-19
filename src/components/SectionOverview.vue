@@ -1,8 +1,24 @@
 <template>
   <article class="grid--12-columns chapter chapter--overview">
     <section class="chapter__block">
+      <figure class="test">
+        <svg
+          v-for="(entity, index) in eu28Entities"
+          :key="entity.name"
+          :width="500"
+          :height="20"
+        >
+          <Gradient
+            :width="500"
+            :height="20"
+            :values="entity.values"
+            :maxValue="maxValueWithoutEu"
+          />
+        </svg>
+      </figure>
+    </section>
+    <section class="chapter__block">
       <p>With the visual representations of all EU members simultaneously visible, it is now possible to explore and compare the developments in different contexts.</p>
-      <figure>Stacked overview of explorers</figure>
       <fieldset>
         <div class="checkbox--custom" :checked="allTrendsAreActive">
           <input 
@@ -16,7 +32,7 @@
       </fieldset>
     </section>
     <section class="grid--autofit chapter__block chapter__block--wide">
-      <EmissionsGradient
+      <Explorer
         v-for="entity in eu28Entities"
         :key="entity.name"
         :intervalStart="intervalStart"
@@ -31,12 +47,14 @@
 </template>
 
 <script>
-import EmissionsGradient from "@/components/EmissionsGradient.vue"
+import Explorer from "@/components/Explorer.vue"
+import Gradient from "@/components/Gradient.vue"
 
 export default {
   name: "SectionOverview",
   components: {
-    EmissionsGradient
+    Explorer,
+    Gradient
   },
   data: function() {
     return {
@@ -59,4 +77,7 @@ export default {
 </script>
 
 <style scoped>
+.test {
+  line-height: 0;
+}
 </style>

@@ -18,7 +18,8 @@
       </div>
       <label :for="'toggle--trend__' + entity.toLowerCase()">Trend</label>
     </fieldset>-->
-    <span class="indicator--startyear">1990</span><span class="indicator--endyear">2016</span>
+    <span class="indicator--small-font indicator--startyear">1990</span>
+    <span class="indicator--small-font indicator--endyear">2016</span>
     <figure class="wrapper--gradient" :class="{ active: isHovered }" ref="wrapper">
       <svg :width="gradientWidth" :height="gradientHeight">
         <Gradient 
@@ -66,7 +67,7 @@ import Trendpath from "@/components/Trendpath.vue"
 import chroma from "chroma-js"
 
 export default {
-  name: "EmissionsGradient",
+  name: "Explorer",
   props: [
     "intervalStart",
     "entity",
@@ -138,7 +139,6 @@ export default {
 .title--entity {
   grid-area: header-left;
   margin-bottom: 0;
-  /*border-bottom: 0.1rem dashed var(--color-grey-09);*/
 }
 
 .toggle--trend {
@@ -156,10 +156,6 @@ export default {
   line-height: 0;
   border: .1rem dashed white;
   overflow: hidden;
-}
-
-.indicator--startyear, .indicator--endyear {
-  font-size: var(--font-size-small);
 }
 
 .indicator--startyear {

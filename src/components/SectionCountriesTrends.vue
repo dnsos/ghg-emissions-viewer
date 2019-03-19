@@ -7,15 +7,10 @@
         <figure>
           <svg width="1200" height="400">
             <g>
-              <rect
-                v-for="(entity, index) in EU28Entities"
-                :key="entity.name"
-                :x="xScale(index)"
-                y="0"
-                :class="entity.name"
-                width="2"
-                height="50"
-              ></rect>
+              <TrendsBarchart
+                v-for="(entity, index) in EU28ChangesIn2016"
+                :key="index"
+              />
             </g>
           </svg>
         </figure>
@@ -24,10 +19,14 @@
 </template>
 
 <script>
+import TrendsBarchart from "@/components/TrendsBarchart.vue"
 import * as d3 from "d3"
 
 export default {
   name: "SectionCountriesTrends",
+  components: {
+    TrendsBarchart
+  },
   data: function() {
     return {
     }
@@ -36,23 +35,39 @@ export default {
     EU28Entities: function() {
         return this.$store.getters.eu28Entities
     },
-    xScale: function(value) {
-      return d3
-        .scaleBand()
-        .rangeRound([0, 27])
-    },
-    yScale: function() {
-      return d3
-        .scaleLinear()
-        .range([0, 400])
-        .domain([-300, 300])
+    EU28ChangesIn2016: function() {
+      let changes = []
+      for (const entity of this.EU28Entities) {
+        let o = {}
+        let change = this.getPercentageChange(entity.values[0], entity.values[entity.values.length - 1])
+        o.name = entity.name
+        o.code = entity.code
+        o.change = change
+        changes.push(o)
+      }
+      return changes
     }
   },
   methods: {
-    
+    bar: function(values, index) {
+      const xScale = d3
+        .scaleBand()
+        .rangeRound([0, 27]);
+
+      const yScale = d3
+        .scaleLinear()
+        .range([0, 400])
+        .domain([100, 200]);
+
+      return {
+        width: 2,
+        height: 100,
+        x: xScale(15),
+        y: yScale(150)
+      }
+    }
   },
   mounted: function () {
-    console.log(this.EU28Entities.length)  
   }
 }
 </script>

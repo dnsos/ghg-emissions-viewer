@@ -2,13 +2,27 @@
   <article class="grid--12-columns chapter chapter--contextualisation">
     <section class="chapter__block">
       <p>Most countries reduced their emissions while only few reported increases. Let’s look exemplarily at Cyprus and Germany.</p>
+      <p>Change in 2016 (relative to 1990 values)</p>
+    </section>
+    <section class="chapter__block grid--autofill-squares">
+      <figure 
+        class="change-square"
+        :style="{ 'background-color': cellColor(9658) }"
+      >
+        <h3><span class="indicator--highlighted">+53%</span></h3>
+        <h4>Cyprus</h4>
+      </figure>
+      <figure
+        class="change-square"
+        :style="{ 'background-color': cellColor(935822) }"
+      >
+        <h3><span class="indicator--highlighted">-26%</span></h3>
+        <h4>Germany</h4>
+      </figure>
     </section>
     <section class="chapter__block">
-      <figure>Two Boxes Cyprus & Germany</figure>
-    </section>
-    <section class="chapter__block">
-      <p>The <span class="indicator__change"> 5X % </span> increase of Cyprus is certainly not [good] and Germany’s reduction of <span class="indicator__change">26 %</span> a step in the right direction. Still, when looking at the actual emission values, we see that in the [relevant] year Germany emitted way more CO2 equivalent than Cyprus did.</p>
-      <figure>Switch + Key</figure>
+      <p>The <span class="indicator--highlighted"> 5X %</span> increase of Cyprus is certainly not [good] and Germany’s reduction of <span class="indicator--highlighted">26 %</span> a step in the right direction. Still, when looking at the actual emission values, we see that in the [relevant] year Germany emitted way more CO2 equivalent than Cyprus did.</p>
+      <button>Show colors</button>
     </section>
     <!-- <section class="shares__controls">
         <fieldset>
@@ -68,15 +82,22 @@ export default {
     }*/
   },
   methods: {
-    getPercentageChange: function (previousValue, currentValue) {
-      let changeValue = previousValue - currentValue
-      return - (changeValue / previousValue) * 100
-    }
   }
 }
 </script>
 
 <style scoped>
+.change-square {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.change-square * {
+  text-align: center;
+  margin-bottom: calc(var(--grid-spacing) / 4);
+}
+
 .shares__controls {
     grid-column: 4 / 10;
 }
