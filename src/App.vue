@@ -10,7 +10,7 @@
 
 <style>
 :root {
-  --color-eublue: #003399;
+  --color-eublue: #303030; /*#003399*/
   --color-lightblue: #79cde5;
   --color-red: #ff5540;
   --color-grey-76: #3e3e3e;
@@ -19,7 +19,8 @@
   --color-grey-02: #f9f9f9;
   --font-size: 16px;
   --font-size-small: 12px;
-  --font-family: "IBM Plex Sans", sans-serif;
+  --font-family: "IBM Plex Serif", "Times New Roman", serif;
+  --font-family-mono: "IBM Plex Mono", monospace;
   --grid-spacing: 2.5rem;
 }
 
@@ -51,7 +52,14 @@ body {
 figure {
   padding: 0;
   margin: 0;
+  line-height: 0;
   border: .1rem dashed white; /* TODO: Remove. For layouting purposes */
+}
+
+.reference-line {
+  stroke: white;
+  stroke-width: 1;
+  stroke-dasharray: 2;
 }
 
 fieldset {
@@ -96,6 +104,7 @@ fieldset {
 }
 
 .indicator {
+  font-family: var(--font-family-mono);
   color: white;
 }
 
@@ -112,7 +121,8 @@ fieldset {
 }
 
 .indicator--highlighted {
-    padding: 0 .5rem;
+    padding-right: .5rem;
+    font-family: var(--font-family-mono);
     font-weight: 700;
     color: var(--color-eublue);
     background-color: white;
@@ -161,10 +171,15 @@ fieldset {
 }
 
 .grid--autofit {
-  /*padding: var(--grid-spacing);*/
   display: grid;
   grid-gap: var(--grid-spacing);
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid--autofit-small {
+  display: grid;
+  grid-gap: var(--grid-spacing);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
 .grid--autofill-squares {
@@ -207,6 +222,11 @@ fieldset {
   .chapter__block {
     grid-column: 4 / 10;
   }
+}
+
+.chapter__block--highlighted {
+  padding: calc(var(--grid-spacing) / 2);
+  background-color: white;
 }
 
 .chapter__block--wide {

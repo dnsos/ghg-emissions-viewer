@@ -2,7 +2,7 @@
   <article class="grid--12-columns chapter chapter--contextualisation">
     <section class="chapter__block">
       <p>Most countries reduced their emissions while only few reported increases. Let’s look exemplarily at Cyprus and Germany.</p>
-      <p>Change in 2016 (relative to 1990 values)</p>
+      <p>Emissions (CO2 equivalent) in 2016</p>
     </section>
     <section class="chapter__block grid--autofill-squares">
       <figure 
@@ -21,7 +21,7 @@
       </figure>
     </section>
     <section class="chapter__block">
-      <p>The <span class="indicator--highlighted"> 5X %</span> increase of Cyprus is certainly not [good] and Germany’s reduction of <span class="indicator--highlighted">26 %</span> a step in the right direction. Still, when looking at the actual emission values, we see that in the [relevant] year Germany emitted way more CO2 equivalent than Cyprus did.</p>
+      <p>The <span class="indicator--highlighted"> 5X %</span> increase of Cyprus is certainly not desirable and Germany’s reduction of <span class="indicator--highlighted">26 %</span> a step in the right direction. Still, when looking at the actual emission values, we see that in the [relevant] year Germany emitted way more CO2 equivalent than Cyprus did.</p>
       <button>Show colors</button>
     </section>
     <!-- <section class="shares__controls">

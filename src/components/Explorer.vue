@@ -28,6 +28,7 @@
           :values="values"
           :maxValue="maxValueRelative"
         />
+        <line class="reference-line" :x1="cellWidth / 2" :y1="gradientHeight / 2" :x2="gradientWidth" :y2="gradientHeight / 2" />
         <Trendpath v-show="trendIsActive" :values="values" :width="gradientWidth" :height="gradientHeight" />
         <g class="gradient--overlay">
           <rect
@@ -47,16 +48,14 @@
       <span>{{ activeYear }}</span>
     </div>
     <div class="indicator--active-value">
-      <span>{{ format(activeValue)}} ktǂ</span>
+      <span>{{ format(activeValue)}} kt</span>
     </div>
     <div class="indicator--change-description">
       <span>Change from {{ intervalStart }}</span>
     </div>
     <div class="indicator--active-change" v-show="activeValue != initialValue">
       <span>
-        <i :class="[activeValue < initialValue ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>
-        {{ Math.abs(getPercentageChange(initialValue, activeValue).toFixed(0)) }} %
-      </span>
+        <i :class="[activeValue < initialValue ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(getPercentageChange(initialValue, activeValue).toFixed(0)) }} %</span>
     </div>
   </section>
 </template>
@@ -134,6 +133,7 @@ export default {
     "footer-first-left footer-first-right"
     "footer-second-left footer-second-right";
   background-color: transparent;
+  font-family: var(--font-family-mono);
 }
 
 .title--entity {
@@ -200,8 +200,13 @@ export default {
   border-right: .1rem solid white;
 }
 
-.indicator--active-value span, .indicator--active-change span {
+.indicator--active-value span {
   padding: 0 .5rem;
+  background-color: white;
+}
+
+.indicator--active-change span {
+  padding-right: .5rem;
   background-color: white;
 }
 
