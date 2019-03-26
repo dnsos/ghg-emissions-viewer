@@ -3,31 +3,39 @@
     <section class="chapter__block">
       <p>Let's look at the progress of individual member states in the latest figures (Their reduction targets <a href="https://ec.europa.eu/clima/policies/strategies/2020_en">differ according to national wealth</a>). The graph below shows how each countries’ emissions changed from 1990 to 2016.</p>
     </section>
-    <section class="chapter__block chapter__block--wide grid--autofit-small">
-      <figure 
+    <TrendpathFigure class="trendpath--country" :entity="selectedEntity" />
+    <section class="selector--country">
+      <section 
         v-for="entity in EU28Entities"
         :key="entity.name"
       >
-        <svg :width="trendpathWidth" :height="trendpathHeight">
+        <p
+          @click="changeSelectedEntity(entity.name)"
+          :class="{ 'entity--selected': (entity.name == selectedEntity.name) }"
+        >{{ entity.name }}</p>
+        <!--<svg :width="trendpathWidth" :height="trendpathHeight">
           <Trendpath :values="entity.values" :width="trendpathWidth" :height="trendpathHeight" />
-        </svg>
-      </figure>
+        </svg>-->
+      </section>
       </section>
   </article>
 </template>
 
 <script>
 import Trendpath from "@/components/Trendpath.vue"
+import TrendpathFigure from "@/components/TrendpathFigure.vue"
 import * as d3 from "d3"
 
 export default {
   name: "SectionCountriesTrends",
   components: {
-    Trendpath
+    Trendpath,
+    TrendpathFigure
   },
   data: function() {
     return {
-      trendpathWidth: 100
+      trendpathWidth: 100,
+      selectedEntity: {}
     }
   },
   computed: {
@@ -36,21 +44,18 @@ export default {
     },
     EU28Entities: function() {
         return this.$store.getters.eu28Entities
-    },
-    EU28ChangesIn2016: function() {
-      let changes = []
-      for (const entity of this.EU28Entities) {
-        let o = {}
-        let change = this.getPercentageChange(entity.values[0], entity.values[entity.values.length - 1])
-        o.name = entity.name
-        o.code = entity.code
-        o.change = change
-        changes.push(o)
-      }
-      return changes
     }
   },
   methods: {
+    changeSelectedEntity: function (entity) {
+      let newEntity = this.EU28Entities.find((el) => {
+        return el.name == entity
+      })
+      this.selectedEntity = newEntity
+    }
+  },
+  created: function () {
+    this.changeSelectedEntity("Belgium") // TODO: Arbitrary. Which entity should be visible at first?
   },
   mounted: function () {
     this.gradientWidth = this.$refs.wrapper.offsetWidth
@@ -62,4 +67,19 @@ export default {
 </script>
 
 <style scoped>
+.trendpath--country {
+  grid-column: 1 / 7;
+}
+
+.selector--country {
+  grid-column: 7 / 13;
+}
+
+.selector--country section {
+  display: inline-block;
+}
+
+.entity--selected {
+  color: white;
+}
 </style>
