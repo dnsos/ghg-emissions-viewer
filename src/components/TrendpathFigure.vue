@@ -38,8 +38,7 @@
         <i
           :class="[entityChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']"
           class="arrow--forward">
-        </i>
-      {{ Math.abs(entityChange)}} %</span>
+        </i>{{ Math.abs(entityChange)}} %</span>
     </div>
   </section>
 </template>

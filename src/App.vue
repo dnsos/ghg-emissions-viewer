@@ -19,8 +19,8 @@
   --color-grey-02: #f9f9f9;
   --font-size: 16px;
   --font-size-small: 12px;
-  --font-family: serif, "IBM Plex Serif", "Times New Roman", serif;
-  --font-family-mono: monospace, "IBM Plex Mono", monospace;
+  --font-family: "IBM Plex Serif", "Times New Roman", serif;
+  --font-family-mono: "IBM Plex Mono", monospace;
   --grid-spacing: 2.5rem;
 }
 
@@ -179,8 +179,9 @@ fieldset {
 
 .grid--autofit-small {
   display: grid;
-  grid-gap: var(--grid-spacing);
+  grid-gap: calc(var(--grid-spacing) / 2);
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-auto-rows: minmax(min-content, max-content);
 }
 
 .grid--autofill-squares {

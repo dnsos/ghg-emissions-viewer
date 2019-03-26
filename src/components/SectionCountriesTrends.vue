@@ -4,18 +4,19 @@
       <p>Let's look at the progress of individual member states in the latest figures (Their reduction targets <a href="https://ec.europa.eu/clima/policies/strategies/2020_en">differ according to national wealth</a>). The graph below shows how each countries’ emissions changed from 1990 to 2016.</p>
     </section>
     <TrendpathFigure class="trendpath--country" :entity="selectedEntity" />
-    <section class="selector--country">
+    <section class="selector--country grid--autofit-small">
       <section 
         v-for="entity in EU28Entities"
         :key="entity.name"
+        :class="{ 'entity--selected': (entity.name == selectedEntity.name) }"
+        @click="changeSelectedEntity(entity.name)"
       >
-        <p
-          @click="changeSelectedEntity(entity.name)"
-          :class="{ 'entity--selected': (entity.name == selectedEntity.name) }"
-        >{{ entity.name }}</p>
-        <!--<svg :width="trendpathWidth" :height="trendpathHeight">
-          <Trendpath :values="entity.values" :width="trendpathWidth" :height="trendpathHeight" />
-        </svg>-->
+        <figure ref="wrapper">
+          <svg :class="entity.code" :width="trendpathWidth" :height="trendpathHeight">
+            <Trendpath :values="entity.values" :width="trendpathWidth" :height="trendpathHeight" />
+          </svg>
+        </figure>
+        <p>{{ entity.name }}</p>
       </section>
       </section>
   </article>
@@ -75,11 +76,36 @@ export default {
   grid-column: 7 / 13;
 }
 
-.selector--country section {
-  display: inline-block;
+.selector--country > section {
+  padding: .2rem;
+  transition: border .1s;
+}
+
+.selector--country > section:not(.entity--selected) {
+  border: .1rem dashed transparent;
+}
+
+.selector--country > section:hover {
+  border: .1rem dashed white;
+  background-color: var(--color-red);
+  cursor: pointer;
+}
+
+.selector--country figure {
+  border: none;
+}
+
+.selector--country p {
+  margin: 0;
+  color: white;
 }
 
 .entity--selected {
+  border: .1rem dashed white;
+}
+
+.entity--selected p {
   color: white;
+  transition: color .1s;
 }
 </style>

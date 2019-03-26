@@ -33,8 +33,6 @@ export default {
           return yScale(d)
         })
     }
-  },
-  mounted: function() {
   }
 }
 </script>
