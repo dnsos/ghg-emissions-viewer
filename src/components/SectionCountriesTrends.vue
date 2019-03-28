@@ -4,19 +4,22 @@
       <p>Let's look at the progress of individual member states in the latest figures (Their reduction targets <a href="https://ec.europa.eu/clima/policies/strategies/2020_en">differ according to national wealth</a>). The graph below shows how each countries’ emissions changed from 1990 to 2016.</p>
     </section>
     <TrendpathFigure class="trendpath--country" :entity="selectedEntity" />
-    <section class="selector--country grid--autofit-small">
-      <section 
-        v-for="entity in EU28Entities"
-        :key="entity.name"
-        :class="{ 'entity--selected': (entity.name == selectedEntity.name) }"
-        @click="changeSelectedEntity(entity.name)"
-      >
-        <figure ref="wrapper">
-          <svg :class="entity.code" :width="trendpathWidth" :height="trendpathHeight">
-            <Trendpath :values="entity.values" :width="trendpathWidth" :height="trendpathHeight" />
-          </svg>
-        </figure>
-        <p>{{ entity.name }}</p>
+    <section class="selector__wrapper">
+      <p class="selector__message"><span>Select a country:</span></p>
+      <section class="selector--country grid--autofit-small">
+        <section 
+          v-for="entity in EU28Entities"
+          :key="entity.name"
+          :class="{ 'entity--selected': (entity.name == selectedEntity.name) }"
+          @click="changeSelectedEntity(entity.name)"
+        >
+          <figure ref="wrapper">
+            <svg :class="entity.code" :width="trendpathWidth" :height="trendpathHeight">
+              <Trendpath :values="entity.values" :width="trendpathWidth" :height="trendpathHeight" />
+            </svg>
+          </figure>
+          <p>{{ entity.name }}</p>
+        </section>
       </section>
       </section>
   </article>
@@ -69,11 +72,33 @@ export default {
 
 <style scoped>
 .trendpath--country {
-  grid-column: 1 / 7;
+  grid-column: span 12;
 }
 
-.selector--country {
+@media (min-width: 700px) {
+  .trendpath--country {
+    grid-column: 1 / 7;
+  }
+}
+
+.selector__wrapper {
+  grid-column: span 12;
+}
+
+@media (min-width: 700px) {
+  .selector__wrapper {
+    grid-column: 7 / 13;
+  }
+}
+
+.selector__message {
   grid-column: 7 / 13;
+  color: white;
+}
+
+.selector__message span {
+  padding: .5rem;
+  background-color: var(--color-red);
 }
 
 .selector--country > section {
@@ -97,6 +122,7 @@ export default {
 
 .selector--country p {
   margin: 0;
+  text-align: center;
   color: white;
 }
 

@@ -136,10 +136,15 @@ fieldset {
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: minmax(min-content, max-content);
   grid-template-areas:
+    "description description"
     "header-left header-right"
     "center center"
     "footer-left footer-right";
   background-color: transparent;
+}
+
+.grid--table > .description {
+  grid-area: description;
 }
 
 .grid--table > .header-left {
@@ -220,7 +225,13 @@ fieldset {
   margin-bottom: 0;
 }
 
-@media (min-width: 85rem) {
+@media (min-width: 700px) {
+  .chapter__block {
+    grid-column: 2 / 12;
+  }
+}
+
+@media (min-width: 1000px) {
   .chapter__block {
     grid-column: 4 / 10;
   }
