@@ -97,5 +97,6 @@ export default {
 
 .indicator--reference {
   font-family: var(--font-family-mono);
+  color: white;
 }
 </style>

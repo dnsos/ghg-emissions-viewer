@@ -95,12 +95,25 @@ fieldset {
   transition: transform .25s;
 }
 
+.arrow--headline {
+  width: 3.6rem;
+  height: 3.6rem;
+}
+
 .arrow--decreasing {
   transform: rotate(45deg);
 }
 
 .arrow--increasing {
   transform: rotate(-45deg);
+}
+
+.figure__description {
+  padding-left: .4rem;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  color: white;
+  background-color: #ffffff36;
 }
 
 .indicator {

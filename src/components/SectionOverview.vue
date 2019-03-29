@@ -19,17 +19,6 @@
     </section>
     <section class="chapter__block">
       <p>With the visual representations of all EU members simultaneously visible, it is now possible to explore and compare the developments in different contexts.</p>
-      <fieldset>
-        <div class="checkbox--custom" :checked="allTrendsAreActive">
-          <input 
-            type="checkbox" 
-            name="toggle-all-trends" 
-            id="toggle-all-trends"
-            v-model="allTrendsAreActive"
-          >
-        </div>
-        <label for="toggle-all-trends">Show all trends</label>
-      </fieldset>
     </section>
     <section class="grid--autofit chapter__block chapter__block--wide">
       <Explorer

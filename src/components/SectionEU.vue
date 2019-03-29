@@ -32,7 +32,7 @@
       </div>
     </section>
     <section class="chapter__block chapter__block--highlighted">
-      <p>By the way, the unit for the emissions throughout this whole article is CO<sub>2</sub> equivalent in kilotonnes (kt).</p>
+      <p>The unit for the emissions throughout this whole article is CO<sub>2</sub> equivalent in kilotonnes (kt).</p>
     </section>
   </article>
 </template>
