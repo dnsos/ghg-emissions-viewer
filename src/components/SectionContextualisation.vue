@@ -5,34 +5,23 @@
       <p class="figure__description">Greenhouse Gas emissions in 2016</p>
     </section>
     <section class="chapter__block change-squares">
-      <div class="change-square" :style="'background-color:' + cellColor(9658) + ';'">
-        <div class="indicator--country">Cyprus</div>
-        <div class="indicator--values">
-          <h4 class="indicator--highlighted"><i :class="[53 < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>53 %</h4>
-          <h4 v-show="isInContext">9,658 kt</h4>
-        </div>
-      </div>
-      <div class="change-square" :style="'background-color:' + cellColor(935822) + ';'">
-        <div class="indicator--country">Germany</div>
-        <div class="indicator--values">
-          <h4 class="indicator--highlighted"><i :class="[-26 < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>26 %</h4>
-          <h4 v-show="isInContext">935,822 kt</h4>
-        </div>
-      </div>
+      <ChangeSquare entity="Cyprus" value="9658" change="53" :isInContext="isInContext" />
+      <ChangeSquare entity="Germany" value="935822" change="-26" :isInContext="isInContext" />
     </section>
     <section class="chapter__block">
       <p>The <span class="indicator--highlighted"><i :class="[53 < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>53 %</span> increase of Cyprus is certainly not desirable and Germany’s reduction of <span class="indicator--highlighted"><i :class="[-26 < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>26 %</span> a step in the right direction. Still, when looking at the actual emission values, we see that in the [relevant] year Germany emitted way more CO2 equivalent than Cyprus did.</p>
-      <button @click="toggleContextualisation">Show colors</button>
+      <button @click="toggleContextualisation">Add context</button>
     </section>
   </article>
 </template>
 
 <script>
-import chroma from "chroma-js"
+import ChangeSquare from "@/components/ChangeSquare.vue"
 
 export default {
   name: "SectionContextualisation",
   components: {
+    ChangeSquare
   },
   data: function() {
     return {
@@ -43,24 +32,8 @@ export default {
     eu28Entities: function () {
         return this.$store.getters.eu28Entities
     },
-    cellColor: function (value) {
-      return chroma
-        .scale(["#79cde5", "#1f2a2e"])
-        .domain([0, 1263000])
-    },
     activeYear: function () {
       return 1990 + this.rangeValue;
-    },
-    testCellColor: function (value) {
-      const color = chroma
-        .scale(["#79cde5", "#1f2a2e"])
-        .domain([0, 1263000])
-
-      if (this.isInContext) {
-        return color(value)
-      } else {
-        return color(0)
-      }
     }
   },
   methods: {
@@ -90,39 +63,5 @@ export default {
 .change-squares > *:first-child {
   grid-row: 1 / 1;
   grid-column: 1 / 1;
-}
-
-.change-square {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: max-content;
-  grid-template-areas: 
-    "h h h"
-    "c c c";
-  font-family: var(--font-family-mono);
-  border: .1rem dashed white;
-  background-color: transparent;
-}
-
-.change-square .indicator--country {
-  grid-area: h;
-  padding-left: .5rem;
-  color: white;
-}
-
-.change-square .indicator--values {
-  grid-area: c;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.indicator--values i {
-  vertical-align: sub;
-}
-
-.indicator--values h4 {
-  margin-bottom: 0;
 }
 </style>

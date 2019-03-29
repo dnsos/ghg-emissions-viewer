@@ -5,7 +5,7 @@
     </section>
     <TrendpathFigure class="trendpath--country" :entity="selectedEntity" />
     <section class="selector__wrapper">
-      <p class="selector__message"><span>Select a country:</span></p>
+      <p class="figure__description">Select a country</p>
       <section class="selector--country grid--autofit-small">
         <section 
           v-for="entity in EU28Entities"
@@ -89,16 +89,6 @@ export default {
   .selector__wrapper {
     grid-column: 7 / 13;
   }
-}
-
-.selector__message {
-  grid-column: 7 / 13;
-  color: white;
-}
-
-.selector__message span {
-  padding: .5rem;
-  background-color: var(--color-red);
 }
 
 .selector--country > section {
