@@ -7,24 +7,15 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   strict: true,
   state: {
-    products: [
-      { name: 'Banana', price: 30 },
-      { name: 'Apple', price: 10 },
-      { name: 'Kiwi', price: 40 },
-      { name: 'Peach', price: 60 }
-    ],
-    data: data
+    data: data,
+    selections: {
+      contextualisation: {
+        entityA: 'Cyprus',
+        entityB: 'Germany'
+      }
+    }
   },
   getters: {
-    saleProducts: (state) => {
-      let saleProducts = state.products.map(product => {
-        return {
-          name: '**' + product.name + '**',
-          price: product.price / 100 * 50
-        }
-      })
-      return saleProducts
-    },
     euEntity: (state) => {
       let euEntity = state.data.entities.filter(entity => entity.name === 'EU')
       return euEntity
@@ -41,6 +32,11 @@ export const store = new Vuex.Store({
       })
       return eu28Entities
     },
+    contextEntities: (state) => {
+      return state.data.entities.filter(entity => {
+        return entity.name === state.selections.contextualisation.entityA // TODO: add second selection (entityB)
+      })
+    },
     sharesOrderedByYear: (state) => {
       let shares = []
       for (let index = 0; index < state.data.entities[0].values.length; index++) {
@@ -56,11 +52,6 @@ export const store = new Vuex.Store({
   mutations: {
     defineData (state, data) {
       state.data = data
-    },
-    reducePrice: (state, payload) => {
-      state.products.forEach(product => {
-        product.price -= payload
-      })
     }
   },
   actions: {
@@ -68,12 +59,6 @@ export const store = new Vuex.Store({
       fetch('data.json')
         .then(response => response.json())
         .then(json => commit('defineData', json))
-    },
-    // always perform asynchronous tasks (like API fetching) in 'actions'
-    handleReducePrice: (context, payload) => {
-      setTimeout(() => {
-        context.commit('reducePrice', payload)
-      }, 0)
     }
   }
 })
