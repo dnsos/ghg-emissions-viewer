@@ -10,7 +10,10 @@
     </section>
     <section class="chapter__block">
       <p>The <span class="indicator--highlighted"><i :class="[53 < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>53 %</span> increase of Cyprus is certainly not desirable and Germany’s reduction of <span class="indicator--highlighted"><i :class="[-26 < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>26 %</span> a step in the right direction. Still, when looking at the actual emission values, we see that in the [relevant] year Germany emitted way more CO2 equivalent than Cyprus did.</p>
-      <button @click="toggleContextualisation">Add context</button>
+      <fieldset>
+        <input @change="toggleContextualisation" type="checkbox" name="context" id="context">
+        <label for="context">In Context</label>
+      </fieldset>
     </section>
   </article>
 </template>
@@ -31,6 +34,9 @@ export default {
   computed: {
     eu28Entities: function () {
         return this.$store.getters.eu28Entities
+    },
+    contextEntities: function () {
+      return this.$store.getters.contextEntities
     },
     activeYear: function () {
       return 1990 + this.rangeValue;

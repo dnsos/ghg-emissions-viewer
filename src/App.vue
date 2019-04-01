@@ -149,15 +149,10 @@ fieldset {
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: minmax(min-content, max-content);
   grid-template-areas:
-    "description description"
     "header-left header-right"
     "center center"
     "footer-left footer-right";
   background-color: transparent;
-}
-
-.grid--table > .description {
-  grid-area: description;
 }
 
 .grid--table > .header-left {
