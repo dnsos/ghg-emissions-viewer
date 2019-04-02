@@ -1,34 +1,50 @@
 <template>
   <article class="grid--12-columns chapter chapter--contextualisation">
     <section class="chapter__block">
-      <p>Most countries reduced their emissions while only few reported increases. Let’s look exemplarily at Cyprus and Germany.</p>
-      <p class="figure__description">Greenhouse Gas emissions in 2016</p>
+      <p>Most countries reduced their emissions while only few reported increases. Let’s look exemplarily at Germany and Cyprus.</p>
+      <p class="figure__description">Greenhouse Gas emissions in CO<sub>2</sub> equivalent in 2016</p>
     </section>
     <section class="chapter__block change-squares">
-      <ChangeSquare entity="Cyprus" value="9658" change="53" :isInContext="isInContext" />
-      <ChangeSquare entity="Germany" value="935822" change="-26" :isInContext="isInContext" />
+      <ChangeSquare
+        v-for="entity in contextEntities"
+        :key="entity.code"
+        :entity="entity.name"
+        :value="entity.values[entity.values.length - 1]"
+        :change="getPercentageChange(entity.values[0], entity.values[entity.values.length - 1])"
+        :isInContext="isInContext"
+      />
     </section>
     <section class="chapter__block">
-      <p>The <span class="indicator--highlighted"><i :class="[53 < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>53 %</span> increase of Cyprus is certainly not desirable and Germany’s reduction of <span class="indicator--highlighted"><i :class="[-26 < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>26 %</span> a step in the right direction. Still, when looking at the actual emission values, we see that in the [relevant] year Germany emitted way more CO2 equivalent than Cyprus did.</p>
-      <fieldset>
-        <input @change="toggleContextualisation" type="checkbox" name="context" id="context">
-        <label for="context">In Context</label>
+      <p>Germany's reduction of <span class="indicator--highlighted"><i :class="[entityAChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityAChange) }} %</span> is certainly a step in the right direction and Cyprus' increase by <span class="indicator--highlighted"><i :class="[entityBChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityBChange) }} %</span> not desirable. Still, when looking at the actual emission values, we see that in the shown year, 2016, Germany emitted way more CO<sub>2</sub> equivalent than Cyprus did.</p>
+      <fieldset class="wrapper__checkbox">
+        <div class="checkbox--custom" :checked="isInContext">
+          <input
+            :value="isInContext"
+            @input="isInContext = $event"
+            type="checkbox"
+            name="context"
+            id="context"
+          >
+        </div>
+        <label for="context">See in Context</label>
       </fieldset>
+      <ColorScale v-show="isInContext" />
     </section>
   </article>
 </template>
 
 <script>
 import ChangeSquare from "@/components/ChangeSquare.vue"
+import ColorScale from "@/components/ColorScale.vue"
 
 export default {
   name: "SectionContextualisation",
   components: {
-    ChangeSquare
+    ChangeSquare,
+    ColorScale
   },
   data: function() {
     return {
-        isInContext: false
     }
   },
   computed: {
@@ -38,14 +54,24 @@ export default {
     contextEntities: function () {
       return this.$store.getters.contextEntities
     },
-    activeYear: function () {
-      return 1990 + this.rangeValue;
+    entityAChange: function () {
+      const val = this.getPercentageChange(this.contextEntities[0].values[0], this.contextEntities[0].values[this.contextEntities[0].values.length - 1])
+      return this.format(val)
+    },
+    entityBChange: function () {
+      const val = this.getPercentageChange(this.contextEntities[1].values[0], this.contextEntities[1].values[this.contextEntities[1].values.length - 1])
+      return this.format(val)
+    },
+    isInContext: {
+      get () {
+        return this.$store.state.selections.contextualisation.isInContext
+      },
+      set () {
+        this.$store.commit('toggleContextState')
+      }
     }
   },
   methods: {
-    toggleContextualisation: function () {
-      this.isInContext = !this.isInContext
-    }
   }
 }
 </script>

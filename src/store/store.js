@@ -11,7 +11,8 @@ export const store = new Vuex.Store({
     selections: {
       contextualisation: {
         entityA: 'Cyprus',
-        entityB: 'Germany'
+        entityB: 'Germany',
+        isInContext: false
       }
     }
   },
@@ -34,7 +35,7 @@ export const store = new Vuex.Store({
     },
     contextEntities: (state) => {
       return state.data.entities.filter(entity => {
-        return entity.name === state.selections.contextualisation.entityA // TODO: add second selection (entityB)
+        return entity.name === state.selections.contextualisation.entityA || entity.name === state.selections.contextualisation.entityB
       })
     },
     sharesOrderedByYear: (state) => {
@@ -52,6 +53,9 @@ export const store = new Vuex.Store({
   mutations: {
     defineData (state, data) {
       state.data = data
+    },
+    toggleContextState (state) {
+      state.selections.contextualisation.isInContext = !state.selections.contextualisation.isInContext
     }
   },
   actions: {

@@ -66,6 +66,17 @@ fieldset {
   border: none;
 }
 
+fieldset.wrapper__checkbox {
+  padding: calc(var(--grid-spacing) / 4);
+  margin: 0;
+  font-family: var(--font-family-mono);
+  color: white;
+}
+
+.wrapper__checkbox * {
+  cursor: pointer;
+}
+
 .checkbox--custom input {
   opacity: 0;
   margin: 0;
@@ -74,16 +85,16 @@ fieldset {
 
 .checkbox--custom {
   display: inline-block;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
   margin-right: .8rem;
   vertical-align: middle;
   background-color: transparent;
-  border: .1rem solid white;
+  border: .1rem dashed white;
 }
 
 .checkbox--custom[checked] {
-  background-color: white;
+  background-color: var(--color-red);
 }
 
 .arrow--forward {
