@@ -2,9 +2,10 @@
   <article class="grid--12-columns chapter chapter--countries">
     <section class="chapter__block">
       <p>Let's look at the progress of individual member states in the latest figures (Their reduction targets <a href="https://ec.europa.eu/clima/policies/strategies/2020_en">differ according to national wealth</a>). The graph below shows how each countries’ emissions changed from 1990 to 2016.</p>
+      <p class="figure__description">Greenhouse Gas emissions: {{ selectedEntity.name }}</p>
     </section>
-    <TrendpathFigure class="trendpath--country" :entity="selectedEntity" />
-    <section class="selector__wrapper">
+    <TrendpathFigure class="chapter__block trendpath--country" :entity="selectedEntity" />
+    <section class="chapter__block selector__wrapper">
       <p class="figure__description">Select a country</p>
       <section class="selector--country grid--autofit-small">
         <section 
@@ -18,7 +19,7 @@
               <Trendpath :values="entity.values" :width="trendpathWidth" :height="trendpathHeight" />
             </svg>
           </figure>
-          <p>{{ entity.name }}</p>
+          <p class="indicator indicator--small-font">{{ entity.name }}</p>
         </section>
       </section>
       </section>
@@ -38,7 +39,7 @@ export default {
   },
   data: function() {
     return {
-      trendpathWidth: 100,
+      trendpathWidth: 70,
       selectedEntity: {}
     }
   },
@@ -71,26 +72,6 @@ export default {
 </script>
 
 <style scoped>
-.trendpath--country {
-  grid-column: span 12;
-}
-
-@media (min-width: 700px) {
-  .trendpath--country {
-    grid-column: 1 / 7;
-  }
-}
-
-.selector__wrapper {
-  grid-column: span 12;
-}
-
-@media (min-width: 700px) {
-  .selector__wrapper {
-    grid-column: 7 / 13;
-  }
-}
-
 .selector--country > section {
   padding: .2rem;
   transition: border .1s;

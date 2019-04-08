@@ -6,7 +6,7 @@
     <section class="chapter__block">
       <p>In an effort to contributing to the mitigation of climate change, the European Union members agreed on reducing the emission of Greenhouse Gases (or, more precisely, CO<sub>2</sub> equivalent) with a <a href="https://ec.europa.eu/clima/policies/strategies_en" target="_blank">strategy of various steps</a>. Targeted is a reduction by 20 % in 2020 and 40 % in 2030, both values are relative to the emission levels of 1990.</p>
       <p>The EU seems on track, with a reduction of about <span class="indicator--highlighted"><i :class="[EUChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(EUChange) }} %</span> in the figures from 2016.</p>
-      <p class="figure__description">Greenhouse Gas emissions EU</p>
+      <p class="figure__description">Greenhouse Gas emissions: EU</p>
     </section>
     <section class="chapter__block grid--table">
       <div class="header-left"><span class="indicator">1990</span></div>

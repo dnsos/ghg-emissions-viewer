@@ -1,6 +1,5 @@
 <template>
   <section class="grid--table">
-    <div class="description"><h4 class="indicator">{{ entity.name }}</h4></div>
     <div class="header-left"><span class="indicator">1990</span></div>
     <div class="header-right"><span class="indicator">2016</span></div>
     <figure class="center figure--trendpath" ref="wrapper">

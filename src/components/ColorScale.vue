@@ -21,6 +21,7 @@ export default {
 <style scoped>
 .wrapper__colorscale {
   padding: calc(var(--grid-spacing) / 2);
+  margin-bottom: var(--grid-spacing);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: max-content;

@@ -67,9 +67,10 @@ fieldset {
 }
 
 fieldset.wrapper__checkbox {
-  padding: calc(var(--grid-spacing) / 4);
+  padding: 0;
   margin: 0;
   font-family: var(--font-family-mono);
+  text-align: center;
   color: white;
 }
 
@@ -203,8 +204,8 @@ fieldset.wrapper__checkbox {
 
 .grid--autofit-small {
   display: grid;
-  grid-gap: calc(var(--grid-spacing) / 2);
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: calc(var(--grid-spacing) / 4);
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   grid-auto-rows: minmax(min-content, max-content);
 }
 
@@ -231,7 +232,7 @@ fieldset.wrapper__checkbox {
 /* SECTIONS
 ----------------------------------------------------- */
 .chapter {
-  max-width: 120rem;
+  max-width: 140rem;
   padding: 0 var(--grid-spacing) var(--grid-spacing);
   border: .1rem dashed transparent; /* TODO: Remove. Helper for dividing sections */
 }
@@ -287,6 +288,7 @@ h6 {
   margin-top: 0;
   margin-bottom: var(--grid-spacing);
   font-weight: 700;
+  line-height: 1.25;
   color: white;
 }
 h1 {
@@ -398,4 +400,13 @@ input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: white;
   background-color: var(--color-red); }
+
+/* ANIMATIONS
+----------------------------------------------------- */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>

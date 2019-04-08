@@ -15,6 +15,9 @@
       />
     </section>
     <section class="chapter__block">
+      <transition name="fade">
+        <ColorScale v-if="isInContext" />
+      </transition>
       <p>Germany's reduction of <span class="indicator--highlighted"><i :class="[entityAChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityAChange) }} %</span> is certainly a step in the right direction and Cyprus' increase by <span class="indicator--highlighted"><i :class="[entityBChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityBChange) }} %</span> not desirable. Still, when looking at the actual emission values, we see that in the shown year, 2016, Germany emitted way more CO<sub>2</sub> equivalent than Cyprus did.</p>
       <fieldset class="wrapper__checkbox">
         <div class="checkbox--custom" :checked="isInContext">
@@ -28,7 +31,6 @@
         </div>
         <label for="context">See in Context</label>
       </fieldset>
-      <ColorScale v-show="isInContext" />
     </section>
   </article>
 </template>

@@ -15,7 +15,8 @@ export default {
   name: "ChangeSquare",
   props: ["entity", "value", "change", "isInContext"],
   data: function() {
-    return {}
+    return {
+    }
   },
   computed: {
     squareColor: function () {

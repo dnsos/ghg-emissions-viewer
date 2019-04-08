@@ -7,17 +7,6 @@
     @mouseout="isHovered = !isHovered"
   >
     <h4 class="title--entity">{{entity}}</h4>
-    <!--<fieldset class="toggle--trend">
-      <div class="checkbox--custom" :checked="trendIsActive">
-        <input
-          type="checkbox"
-          :id="'toggle--trend__' + entity.toLowerCase()"
-          name="toggle--trend"
-          @change="toggleMode"
-        >
-      </div>
-      <label :for="'toggle--trend__' + entity.toLowerCase()">Trend</label>
-    </fieldset>-->
     <span class="indicator--small-font indicator--startyear">1990</span>
     <span class="indicator--small-font indicator--endyear">2016</span>
     <figure class="wrapper--gradient" :class="{ active: isHovered }" ref="wrapper">
@@ -127,7 +116,7 @@ export default {
   grid-gap: calc(var(--grid-spacing) / 4);
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
-    "header-left header-right"
+    "header header"
     "above-center-left above-center-right"
     "center center"
     "footer-first-left footer-first-right"
@@ -137,18 +126,10 @@ export default {
 }
 
 .title--entity {
-  grid-area: header-left;
+  grid-area: header;
   margin-bottom: 0;
 }
 
-.toggle--trend {
-  grid-area: header-right;
-  text-align: right;
-  border: none;
-  padding: 0;
-  margin: 0;
-  color: white;
-}
 
 .wrapper--gradient {
   grid-area: center;
