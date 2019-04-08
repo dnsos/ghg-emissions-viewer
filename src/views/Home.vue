@@ -1,5 +1,6 @@
 <template>
   <main>
+    <SectionIntro />
     <SectionEU />
     <SectionCountriesTrends />
     <SectionContextualisation />
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+import SectionIntro from '@/components/SectionIntro.vue'
 import SectionEU from '@/components/SectionEU.vue'
 import SectionCountriesTrends from '@/components/SectionCountriesTrends.vue'
 import SectionContextualisation from '@/components/SectionContextualisation.vue'
@@ -27,6 +29,7 @@ export default {
     }
   },
   components: {
+    SectionIntro,
     SectionEU,
     SectionCountriesTrends,
     SectionContextualisation,
