@@ -33,6 +33,10 @@ export const store = new Vuex.Store({
       })
       return eu28Entities
     },
+    sortedEU28Entities: (state, getters) => {
+      let sorted = getters.eu28Entities.sort((a, b) => (a.values[a.values.length - 1] < b.values[b.values.length - 1]) ? 1 : -1)
+      return sorted
+    },
     contextEntities: (state) => {
       return state.data.entities.filter(entity => {
         return entity.name === state.selections.contextualisation.entityA || entity.name === state.selections.contextualisation.entityB
