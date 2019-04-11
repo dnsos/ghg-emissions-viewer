@@ -2,7 +2,7 @@
   <article class="grid--12-columns chapter chapter--contextualisation">
     <section class="chapter__block">
       <p>Most countries reduced their emissions while only few reported increases. Let’s look exemplarily at Germany and Cyprus.</p>
-      <p class="figure__description">Greenhouse Gas emissions in CO<sub>2</sub> equivalent in 2016</p>
+      <p class="figure__description">Greenhouse Gas emissions in 2016</p>
     </section>
     <section class="chapter__block change-squares">
       <ChangeSquare

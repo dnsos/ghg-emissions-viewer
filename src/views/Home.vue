@@ -4,7 +4,7 @@
     <SectionEU />
     <SectionCountriesTrends />
     <SectionContextualisation />
-    <SectionComparison />
+    <SectionStackedGradients />
     <SectionDetail />
     <SectionOverview />
     <SectionAbout />
@@ -17,7 +17,7 @@ import SectionEU from '@/components/SectionEU.vue'
 import SectionCountriesTrends from '@/components/SectionCountriesTrends.vue'
 import SectionContextualisation from '@/components/SectionContextualisation.vue'
 import SectionShares from '@/components/SectionShares.vue'
-import SectionComparison from '@/components/SectionComparison.vue'
+import SectionStackedGradients from '@/components/SectionStackedGradients.vue'
 import SectionDetail from '@/components/SectionDetail.vue'
 import SectionOverview from '@/components/SectionOverview.vue'
 import SectionAbout from '@/components/SectionAbout.vue'
@@ -34,7 +34,7 @@ export default {
     SectionCountriesTrends,
     SectionContextualisation,
     SectionShares,
-    SectionComparison,
+    SectionStackedGradients,
     SectionDetail,
     SectionOverview,
     SectionAbout

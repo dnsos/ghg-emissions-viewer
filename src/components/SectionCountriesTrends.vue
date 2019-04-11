@@ -48,7 +48,7 @@ export default {
       return this.trendpathWidth / 3
     },
     EU28Entities: function() {
-        return this.$store.getters.eu28Entities
+        return this.$store.getters.sortedEU28Entities
     }
   },
   methods: {
@@ -60,7 +60,7 @@ export default {
     }
   },
   created: function () {
-    this.changeSelectedEntity("Belgium") // TODO: Arbitrary. Which entity should be visible at first?
+    this.changeSelectedEntity("Germany") // TODO: Arbitrary. Which entity should be visible at first?
   },
   mounted: function () {
     this.gradientWidth = this.$refs.wrapper.offsetWidth
@@ -83,7 +83,6 @@ export default {
 
 .selector--country > section:hover {
   border: .1rem dashed white;
-  background-color: var(--color-red);
   cursor: pointer;
 }
 
@@ -99,6 +98,7 @@ export default {
 
 .entity--selected {
   border: .1rem dashed white;
+  background-color: var(--color-red);
 }
 
 .entity--selected p {

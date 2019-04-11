@@ -69,7 +69,6 @@ export default {
     Trendpath
   },
   data: function() {
-    // define svg settings
     return {
       isHovered: false,
       trendIsActive: this.initialTrendState,
