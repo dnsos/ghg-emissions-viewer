@@ -1,7 +1,7 @@
 <template>
   <article class="grid--12-columns chapter chapter--contextualisation">
     <section class="chapter__block">
-      <p>Most countries reduced their emissions while only few reported increases. Let’s look exemplarily at Germany and Cyprus.</p>
+      <p>Out of 28 member states 23 reduced their emissions, only Spain, Austria, Portugal, Ireland and Cyprus reported increases from their 1990 reference values. Let’s look exemplarily at two countries: Germany, which reported a modest emission reduction in 2016, and Cyprus with its strong increase.</p>
       <p class="figure__description">Greenhouse Gas emissions in 2016</p>
     </section>
     <section class="chapter__block change-squares">
@@ -18,7 +18,7 @@
       <transition name="fade">
         <ColorScale v-if="isInContext" />
       </transition>
-      <p>Germany's reduction of <span class="indicator--highlighted"><i :class="[entityAChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityAChange) }} %</span> is certainly a step in the right direction and Cyprus' increase by <span class="indicator--highlighted"><i :class="[entityBChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityBChange) }} %</span> not desirable. Still, when looking at the actual emission values, we see that in the shown year, 2016, Germany emitted way more CO<sub>2</sub> equivalent than Cyprus did.</p>
+      <p>The <span class="indicator--highlighted"><i :class="[entityAChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityAChange) }} %</span> reduction of Germany is certainly a step in the right direction and Cyprus' increase by <span class="indicator--highlighted"><i :class="[entityBChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityBChange) }} %</span> not desirable. But it is now when we should shift the perspective and interpret the developments not on individual scales of percentage changes, but on a comparable scale that highlights the actual emission values of each country.</p>
       <fieldset class="wrapper__checkbox">
         <div class="checkbox--custom" :checked="isInContext">
           <input
@@ -31,6 +31,7 @@
         </div>
         <label for="context">See in Context</label>
       </fieldset>
+      <p>Now we see that Germany, although with a reducing trend, emitted way more Greenhouse Gases than Cyprus did.</p>
     </section>
   </article>
 </template>

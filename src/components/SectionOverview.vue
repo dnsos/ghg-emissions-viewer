@@ -1,7 +1,13 @@
 <template>
   <article class="grid--12-columns chapter chapter--overview">
     <section class="chapter__block">
-      <p>With the visual representations of all EU members simultaneously visible, it is now possible to explore and compare the developments in different contexts.</p>
+      <p>With this in mind, we can now assess the developments of Greenhouse Gas emissions on two relevant scales:</p>
+      <ul>
+        <li>a scale for an individual trend of one entity, relative to its own reference value in 1990</li>
+        <li>a linear scale between zero emissions and the highest emission value within the EU countries</li>
+      </ul>
+      <p>Layering the visual elements of the trendline and the colour encoded boxes, two relevant aspects are visible simultaneously and allow for a well-informed assessment of emission developments.</p>
+      <p>In the following, this two-scale encoding is applied to each EU member state and can be explored.</p>
     </section>
     <section class="grid--autofit chapter__block chapter__block--wide">
       <Explorer

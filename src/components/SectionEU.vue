@@ -1,8 +1,8 @@
 <template>
   <article class="grid--12-columns chapter chapter--EU">
     <section class="chapter__block">
-      <p>In an effort to contributing to the mitigation of climate change, the European Union members agreed on reducing the emission of Greenhouse Gases (or, more precisely, CO<sub>2</sub> equivalent) with a <a href="https://ec.europa.eu/clima/policies/strategies_en" target="_blank">strategy of various steps</a>. Targeted is a reduction by 20 % in 2020 and 40 % in 2030, both values are relative to the emission levels of 1990.</p>
-      <p>The EU seems on track, with a reduction of about <span class="indicator--highlighted"><i :class="[EUChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(EUChange) }} %</span> in the figures from 2016.</p>
+      <p>In an effort to contributing to the mitigation of climate change, the European Union members agreed on reducing the emission of Greenhouse Gases (or, more precisely, CO<sub>2</sub> equivalent) with a <a href="https://ec.europa.eu/clima/policies/strategies_en" target="_blank">strategy of various steps</a>. The EU as an entity targets a reduction by <span class="indicator--highlighted"><i class="arrow--forward arrow--decreasing"></i>20 %</span> in 2020 and <span class="indicator--highlighted"><i class="arrow--forward arrow--decreasing"></i>40 %</span> in 2030. These percentage values are relative to the EU emission levels in 1990.</p>
+      <p>The EU seems on track. While in 1990 the emission level was 5,719,571 kt, it could be reduced to 4,440,775 kt in 2016. This equals a decrease of about <span class="indicator--highlighted"><i :class="[EUChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(EUChange) }} %</span>.</p>
       <p class="figure__description">Greenhouse Gas emissions: EU</p>
     </section>
     <section class="chapter__block grid--table">
@@ -30,7 +30,7 @@
       </div>
     </section>
     <section class="chapter__block chapter__block--highlighted">
-      <p>The unit for the emissions throughout this whole article is CO<sub>2</sub> equivalent in kilotonnes (kt).</p>
+      <p>The unit for Greenhouse Gas emissions throughout this article is CO<sub>2</sub> equivalent in kilotonnes (kt). In detail, this includes: CO<sub>2</sub>, N2O in CO<sub>2</sub> equivalent, CH4 in CO<sub>2</sub> equivalent, HFC in CO<sub>2</sub> equivalent, PFC in CO<sub>2</sub> equivalent, SF6 in CO<sub>2</sub> equivalent and NF3 in CO<sub>2</sub> equivalent from all sectors and as well as indirect CO<sub>2</sub> (excluding LULUCF and memo items and including international aviation).</p>
     </section>
   </article>
 </template>

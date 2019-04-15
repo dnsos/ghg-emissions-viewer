@@ -10,9 +10,9 @@
 
 <style>
 :root {
-  --color-eublue: #303030; /*#003399*/
   --color-lightblue: #79cde5;
   --color-red: #ff5540;
+  --color-grey-81: #303030; /*#003399*/
   --color-grey-76: #3e3e3e;
   --color-grey-20: #cccccc;
   --color-grey-09: #e7e7e7;
@@ -33,8 +33,8 @@ html {
 body {
   padding: 0;
   margin: 0;
-  color: var(--color-eublue);
-  background-color: var(--color-lightblue);
+  color: var(--color-grey-81);
+  background-color: white;
   line-height: 1.6;
   font-family: var(--font-family);
   font-size: var(--font-size);
@@ -54,6 +54,10 @@ figure {
   margin: 0;
   line-height: 0;
   border: .1rem dashed white; /* TODO: Remove. For layouting purposes */
+}
+
+.figure--trendpath {
+  background-color: #9bddef;
 }
 
 .reference-line {
@@ -124,13 +128,13 @@ fieldset.wrapper__checkbox {
   padding-left: .4rem;
   font-family: var(--font-family-mono);
   font-size: var(--font-size-small);
-  color: white;
-  background-color: #ffffff36;
+  color: var(--color-grey-81);
+  background-color: #79cde53d;
 }
 
 .indicator {
   font-family: var(--font-family-mono);
-  color: white;
+  color: var(--color-grey-81);
 }
 
 .indicator--left-aligned {
@@ -149,8 +153,8 @@ fieldset.wrapper__checkbox {
     padding-right: .5rem;
     font-family: var(--font-family-mono);
     font-weight: 700;
-    color: var(--color-eublue);
-    background-color: white;
+    color: var(--color-grey-81);
+    background-color: #79cde53d;
 }
 
 /* GRIDS
@@ -259,7 +263,9 @@ fieldset.wrapper__checkbox {
 
 .chapter__block--highlighted {
   padding: calc(var(--grid-spacing) / 2);
-  background-color: white;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  background-color: #79cde53d;
 }
 
 .chapter__block--wide {
@@ -289,7 +295,7 @@ h6 {
   margin-bottom: var(--grid-spacing);
   font-weight: 700;
   line-height: 1.25;
-  color: white;
+  color: var(--color-red);
 }
 h1 {
   font-size: calc(var(--font-size) * 1.8);

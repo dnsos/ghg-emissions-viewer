@@ -1,7 +1,7 @@
 <template>
   <article class="grid--12-columns chapter chapter--comparison">
     <section class="chapter__block">
-      <p>When applying this color encoding to each year from 1990 to 2016, we can observe that Germany continuously contributes way more CO2 equivalent than Cyprus with its - almost “invisible” - emissions.</p>
+      <p>And when applying this color encoding to each year from 1990 to 2016, we can observe that Germany continuously emits way more Greenhouse Gases than Cyprus with its almost “invisible” emissions. In fact, only a few countries are responsible for the total amount of emissions within the European Union.</p>
     </section>
     <section class="chapter__block">
       <p class="figure__description">Greenhouse Gas emissions from 1990 to 2016</p>

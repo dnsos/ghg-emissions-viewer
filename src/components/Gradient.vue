@@ -28,7 +28,7 @@ export default {
     },
     cellColor: function(value) {
       return chroma
-        .scale(["#79cde5", "#1f2a2e"])
+        .scale(["#79cde5", "#1f2a2e"]) // #e9faff
         .domain([0, this.maxValue]);
     }
   }

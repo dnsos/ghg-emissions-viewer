@@ -1,7 +1,7 @@
 <template>
   <article class="grid--12-columns chapter chapter--countries">
     <section class="chapter__block">
-      <p>Let's look at the progress of individual member states in the latest figures (Their reduction targets <a href="https://ec.europa.eu/clima/policies/strategies/2020_en">differ according to national wealth</a>). The graph below shows how each countries’ emissions changed from 1990 to 2016.</p>
+      <p>In addition to treating the EU as one entity, it is also possible to analyse the progress of individual member states (Their reduction targets <a href="https://ec.europa.eu/clima/policies/strategies/2020_en">differ according to national wealth</a>). Each country has its own reference value from 1990 from which the development is calculated.</p>
       <p class="figure__description">Greenhouse Gas emissions: {{ selectedEntity.name }}</p>
     </section>
     <TrendpathFigure class="chapter__block trendpath--country" :entity="selectedEntity" />
