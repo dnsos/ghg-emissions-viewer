@@ -153,6 +153,7 @@ export default {
 .indicator--active-year {
   grid-area: footer-first-left;
   padding-left: 1rem;
+  color: white;
   border-left: .1rem solid white;
   font-weight: 700;
 }
@@ -169,6 +170,7 @@ export default {
   grid-area: footer-second-left;
   text-align: left;
   padding-left: 1rem;
+  color: white;
   border-left: .1rem solid white;
 }
 

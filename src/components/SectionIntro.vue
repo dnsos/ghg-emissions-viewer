@@ -20,6 +20,11 @@ export default {
 
 <style scoped>
 .chapter--intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
+  padding: calc(var(--grid-spacing) * 4);
+  text-align: center;
 }
 </style>

@@ -10,9 +10,11 @@
 
 <style>
 :root {
+  --color-eublue: #003399;
   --color-lightblue: #79cde5;
+  --color-lightestblue: #70bcd9;
   --color-red: #ff5540;
-  --color-grey-81: #303030; /*#003399*/
+  --color-grey-81: #303030;
   --color-grey-76: #3e3e3e;
   --color-grey-20: #cccccc;
   --color-grey-09: #e7e7e7;
@@ -34,7 +36,7 @@ body {
   padding: 0;
   margin: 0;
   color: var(--color-grey-81);
-  background-color: white;
+  background-color: var(--color-lightblue);
   line-height: 1.6;
   font-family: var(--font-family);
   font-size: var(--font-size);
@@ -57,7 +59,7 @@ figure {
 }
 
 .figure--trendpath {
-  background-color: #9bddef;
+  background-color: var(--color-lightblue);
 }
 
 .reference-line {
@@ -128,13 +130,13 @@ fieldset.wrapper__checkbox {
   padding-left: .4rem;
   font-family: var(--font-family-mono);
   font-size: var(--font-size-small);
-  color: var(--color-grey-81);
-  background-color: #79cde53d;
+  color: white;
+  background-color: var(--color-lightestblue);
 }
 
 .indicator {
   font-family: var(--font-family-mono);
-  color: var(--color-grey-81);
+  color: white;
 }
 
 .indicator--left-aligned {
@@ -154,7 +156,7 @@ fieldset.wrapper__checkbox {
     font-family: var(--font-family-mono);
     font-weight: 700;
     color: var(--color-grey-81);
-    background-color: #79cde53d;
+    background-color: white;
 }
 
 /* GRIDS
@@ -209,7 +211,7 @@ fieldset.wrapper__checkbox {
 .grid--autofit-small {
   display: grid;
   grid-gap: calc(var(--grid-spacing) / 4);
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   grid-auto-rows: minmax(min-content, max-content);
 }
 
@@ -265,7 +267,8 @@ fieldset.wrapper__checkbox {
   padding: calc(var(--grid-spacing) / 2);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-small);
-  background-color: #79cde53d;
+  color: white;
+  background-color: var(--color-lightestblue);
 }
 
 .chapter__block--wide {
@@ -295,7 +298,7 @@ h6 {
   margin-bottom: var(--grid-spacing);
   font-weight: 700;
   line-height: 1.25;
-  color: var(--color-red);
+  color: white;
 }
 h1 {
   font-size: calc(var(--font-size) * 1.8);

@@ -32,7 +32,7 @@
         >{{ format(endValue) }} kt</text>
       </svg>
     </figure>
-    <div class="footer-left"><span class="indicator--reference">Reference value</span></div>
+    <div class="footer-left"><span class="indicator--reference">Change from 1990:</span></div>
     <div class="footer-right">
       <span class="indicator indicator--highlighted">
         <i
