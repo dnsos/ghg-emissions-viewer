@@ -301,7 +301,7 @@ h6 {
   color: white;
 }
 h1 {
-  font-size: calc(var(--font-size) * 1.8);
+  font-size: calc(var(--font-size) * 2.6);
 }
 h2 {
   font-size: calc(var(--font-size) * 1.4);
@@ -321,7 +321,7 @@ h6 {
 
 @media (min-width: 750px) {
   h1 {
-    font-size: calc(var(--font-size) * 3);
+    font-size: calc(var(--font-size) * 4);
   }
   h2 {
     font-size: calc(var(--font-size) * 2.4);
