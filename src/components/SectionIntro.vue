@@ -1,7 +1,6 @@
 <template>
   <article class="grid--12-columns chapter chapter--intro">
     <section class="chapter__block">
-      <img class="stars" src="../assets/eu-stars.svg" alt="EU stars">
       <h1>The EU and its Greenhouse Gas emissions</h1>
       <p>A visual argument for assessing Greenhouse Gas emissions on two scales</p>
       <p class="indicator">Scroll down to explore</p>
@@ -20,11 +19,6 @@ export default {
 </script>
 
 <style scoped>
-.stars {
-  width: 50%;
-  margin-bottom: var(--grid-spacing);
-}
-
 .chapter--intro {
   display: flex;
   flex-direction: column;
@@ -41,8 +35,10 @@ export default {
 }
 
 .chapter--intro h1 {
-  background: linear-gradient(to right, #5790a1 0%, black 100%);
+  /*background: linear-gradient(to right, #5790a1 0%, black 100%);
 	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	-webkit-text-fill-color: transparent;*/
+  color: white;
+  font-family: var(--font-family-mono);
 }
 </style>

@@ -17,7 +17,14 @@
           :values="values"
           :maxValue="maxValueRelative"
         />
-        <line class="reference-line" :x1="cellWidth / 2" :y1="gradientHeight / 2" :x2="gradientWidth" :y2="gradientHeight / 2" />
+        <line class="reference-line" :x1="cellWidth / 2" :y1="gradientHeight / 2" :x2="gradientWidth - 35" :y2="gradientHeight / 2" />
+        <text
+          class="indicator--zero indicator--small-font"
+          :x="gradientWidth - (cellWidth / 2)"
+          :y="gradientHeight / 2"
+          dy="4%"
+          text-anchor="end"
+        >0 %</text>
         <Trendpath v-show="trendIsActive" :values="values" :width="gradientWidth" :height="gradientHeight" />
         <g class="gradient--overlay">
           <rect
@@ -136,6 +143,10 @@ export default {
   line-height: 0;
   border: .1rem dashed white;
   overflow: hidden;
+}
+
+.indicator--zero {
+  fill: white;
 }
 
 .indicator--startyear {
