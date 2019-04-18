@@ -2,8 +2,7 @@
   <div class="change-square" :style="'background-color:' + squareColor + ';'">
     <div class="indicator--country">{{ entity }}</div>
     <div class="indicator--values">
-      <h4 class="indicator--highlighted"><i :class="[change < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(format(change)) }} %</h4>
-      <h4 v-show="isInContext">{{ format(value) }} kt</h4>
+      <h4 class="indicator--highlighted"><i v-if="!isInContext" :class="[change < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ isInContext ? format(value) + ' kt' : Math.abs(format(change)) + ' %' }}</h4>
     </div>
   </div>
 </template>
@@ -66,6 +65,7 @@ export default {
 }
 
 .indicator--values h4 {
+  padding-left: .7rem;
   margin-bottom: 0;
 }
 </style>

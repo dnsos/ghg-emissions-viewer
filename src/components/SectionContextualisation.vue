@@ -14,24 +14,27 @@
         :isInContext="isInContext"
       />
     </section>
-    <section class="chapter__block">
-      <transition name="fade">
-        <ColorScale v-if="isInContext" />
-      </transition>
-      <p>The <span class="indicator--highlighted"><i :class="[entityAChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityAChange) }} %</span> reduction of Germany is certainly a step in the right direction and Cyprus' increase by <span class="indicator--highlighted"><i :class="[entityBChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityBChange) }} %</span> not desirable. But it is now when we should shift the perspective and interpret the developments not on individual scales of percentage changes, but on a comparable scale that highlights the actual emission values of each country.</p>
-      <fieldset class="wrapper__checkbox">
-        <div class="checkbox--custom" :checked="isInContext">
-          <input
-            :value="isInContext"
-            @input="isInContext = $event"
-            type="checkbox"
-            name="context"
-            id="context"
-          >
-        </div>
-        <label for="context">See in Context</label>
-      </fieldset>
-      <p>Now we see that Germany, although with a reducing trend, emitted way more Greenhouse Gases than Cyprus did.</p>
+    <section class="chapter__block chapter__switch">
+      <section>
+        <p>The <span class="indicator--highlighted"><i :class="[entityAChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityAChange) }} %</span> reduction of Germany is certainly a step in the right direction and Cyprus' increase by <span class="indicator--highlighted"><i :class="[entityBChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityBChange) }} %</span> not desirable. But it is now when we should shift the perspective and interpret the developments not on individual scales of percentage changes, but on a comparable scale that highlights the actual emission values of each country.</p>
+        <fieldset class="wrapper__checkbox">
+          <div class="checkbox--custom" :checked="isInContext">
+            <input
+              :value="isInContext"
+              @input="isInContext = $event"
+              type="checkbox"
+              name="context"
+              id="context"
+            >
+          </div>
+          <label for="context">See scale for emission values</label>
+        </fieldset>
+      </section>
+      <section>
+        <transition name="fade">
+          <ColorScale v-if="isInContext" />
+        </transition>
+      </section>
     </section>
   </article>
 </template>
@@ -80,6 +83,12 @@ export default {
 </script>
 
 <style scoped>
+.chapter__switch {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  grid-gap: var(--grid-spacing);
+}
+
 .change-squares {
   display: grid;
   grid-gap: var(--grid-spacing);

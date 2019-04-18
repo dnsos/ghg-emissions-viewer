@@ -1,14 +1,14 @@
 <template>
   <div class="wrapper__colorscale">
     <div class="colorscale"></div>
-    <div>
-      <p class="colorscale__indicator">No emissions</p>
-      <p>0 kt</p>
-    </div>
-    <div class="colorscale__max">
-      <p class="colorscale__indicator">Highest emission value within EU</p>
-      <p>1,263,708 kt</p>
-    </div>
+    <div class="indicator--max">
+        <p class="colorscale__indicator">Highest emission value within EU</p>
+        <p>1,263,708 kt</p>
+      </div>
+      <div class="indicator--min">
+        <p class="colorscale__indicator">No emissions</p>
+        <p>0 kt</p>
+      </div>
   </div>
 </template>
 
@@ -20,31 +20,38 @@ export default {
 
 <style scoped>
 .wrapper__colorscale {
-  padding: calc(var(--grid-spacing) / 2);
-  margin-bottom: var(--grid-spacing);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 10fr;
   grid-template-rows: max-content;
+  grid-gap: calc(var(--grid-spacing) / 4);
+  grid-template-areas: 
+    "g max"
+    "g ."
+    "g min";
   font-family: var(--font-family-mono);
   font-size: var(--font-size-small);
-  background-color: #ffffff36;
 }
 
 p {
   margin-bottom: 0;
+  text-align: left;
 }
 
 .colorscale {
-  grid-column: span 2;
-  width: 100%;
-  height: 1rem;
-  background: linear-gradient(90deg, #79cde5, #000);
+  grid-area: g;
+  width: 1rem;
+  height: 15rem;
+  background: linear-gradient(0deg, #79cde5, #000);
   margin-bottom: calc(var(--grid-spacing) / 4);
   border: .1rem dashed white;
 }
 
-.colorscale__max {
-  text-align: right;
+.indicator--min {
+  grid-area: min;
+}
+
+.indicator--max {
+  grid-area: max;
 }
 
 .colorscale__indicator {
