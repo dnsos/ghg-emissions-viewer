@@ -2,7 +2,6 @@
   <article class="grid--12-columns chapter chapter--intro">
     <section class="chapter__block">
       <h1>The EU and its Greenhouse Gas emissions</h1>
-      <p>A visual argument for assessing Greenhouse Gas emissions on two scales</p>
       <p class="indicator">Scroll down to explore</p>
     </section>
   </article>

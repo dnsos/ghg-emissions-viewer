@@ -16,7 +16,7 @@
     </section>
     <section class="chapter__block chapter__switch">
       <section>
-        <p>The <span class="indicator--highlighted"><i :class="[entityAChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityAChange) }} %</span> reduction of Germany is certainly a step in the right direction and Cyprus' increase by <span class="indicator--highlighted"><i :class="[entityBChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityBChange) }} %</span> not desirable. But it is now when we should shift the perspective and interpret the developments not on individual scales of percentage changes, but on a comparable scale that highlights the actual emission values of each country.</p>
+        <p>The <span class="indicator--highlighted"><i :class="[entityAChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityAChange) }} %</span> reduction of Germany is certainly a step in the right direction and Cyprus' increase by <span class="indicator--highlighted"><i :class="[entityBChange < 0 ? 'arrow--decreasing' : 'arrow--increasing']" class="arrow--forward"></i>{{ Math.abs(entityBChange) }} %</span> not desirable. But now it makes sense to shift the perspective and interpret the developments not on individual scales of percentage changes, but on a comparable scale that highlights the actual emission values of each country.</p>
         <fieldset class="wrapper__checkbox">
           <div class="checkbox--custom" :checked="isInContext">
             <input

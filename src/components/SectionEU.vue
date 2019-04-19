@@ -7,7 +7,7 @@
     </section>
     <TrendpathFigure class="chapter__block" :entity="EUEntity" />
     <section class="chapter__block chapter__block--highlighted">
-      <p>The unit for Greenhouse Gas emissions throughout this article is CO<sub>2</sub> equivalent in kilotonnes (kt). In detail, this includes: CO<sub>2</sub>, N2O in CO<sub>2</sub> equivalent, CH4 in CO<sub>2</sub> equivalent, HFC in CO<sub>2</sub> equivalent, PFC in CO<sub>2</sub> equivalent, SF6 in CO<sub>2</sub> equivalent and NF3 in CO<sub>2</sub> equivalent from all sectors and as well as indirect CO<sub>2</sub> (excluding LULUCF and memo items and including international aviation).</p>
+      <p>The unit for Greenhouse Gas emissions is CO<sub>2</sub> equivalent in kilotonnes (kt). In detail, this includes: CO<sub>2</sub>, N2O in CO<sub>2</sub> equivalent, CH4 in CO<sub>2</sub> equivalent, HFC in CO<sub>2</sub> equivalent, PFC in CO<sub>2</sub> equivalent, SF6 in CO<sub>2</sub> equivalent and NF3 in CO<sub>2</sub> equivalent from all sectors and as well as indirect CO<sub>2</sub> (excluding LULUCF and memo items and including international aviation).</p>
     </section>
   </article>
 </template>
