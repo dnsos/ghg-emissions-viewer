@@ -136,7 +136,6 @@ export default {
   margin-bottom: 0;
 }
 
-
 .wrapper--gradient {
   grid-area: center;
   width: 100%;
